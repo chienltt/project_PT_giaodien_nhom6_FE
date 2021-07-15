@@ -1,13 +1,11 @@
 import {createApiRequest} from "../../services/api";
 
 export const loginApi= (email,password)=>{
+    const data={email,password}
     const result= createApiRequest({
         url:'/api/login',
         method:'POST',
-        data:{
-            email:email,
-            password:password
-        }
+        data:  data
     })
     return result
 }

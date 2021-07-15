@@ -1,16 +1,32 @@
-import React from "react";
-import {Button, Checkbox, Form, Input} from "antd";
+import React, {useState} from "react";
+import {Button, Checkbox, Form, Input, notification} from "antd";
 import "./LoginContainer.scss"
 import 'antd/dist/antd.css';
 import {loginApi} from "./AccountApi";
+
+const loginCode={
+    success:200,
+    fail:101
+}
 const LoginForm=()=>{
+    const[loading,setLoading]=useState(false)
 
     const onSubmit=async (values)=> {
-        console.log("success",values)
+        setLoading(true)
         const {data,success}=await loginApi(values.email,values.password)
         if(success){
-            if(data)
-            window.location.pathname="/"
+            console.log("okok",data)
+            if(data.data.status_code===loginCode.success) {
+                // window.location.href="/"
+                setLoading(false)
+            }
+            else{
+                setLoading(false)
+                notification.error({
+                    message:"Error",
+                    description: "Invalid username or password"
+                })
+            }
         }
     }
 
@@ -81,7 +97,7 @@ const LoginForm=()=>{
                             span: 20,
                         }}
                     >
-                        <Button type="primary" htmlType="submit">
+                        <Button loading={loading} type="primary" htmlType="submit" >
                             Submit
                         </Button>
                     </Form.Item>
