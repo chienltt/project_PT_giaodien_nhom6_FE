@@ -1,24 +1,29 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {Button, Checkbox, Form, Input, notification} from "antd";
 import "./LoginContainer.scss"
 import 'antd/dist/antd.css';
 import {loginApi} from "./AccountApi";
+import AppContext from "../../AppContext";
 
-const loginCode={
-    success:200,
-    fail:101
-}
+
 const LoginForm=()=>{
+
     const[loading,setLoading]=useState(false)
+    const {setUser,user}= useContext(AppContext)
+
 
     const onSubmit=async (values)=> {
         setLoading(true)
         const {data,success}=await loginApi(values.email,values.password)
         if(success){
-            console.log("okok",data)
-            if(data.data.status_code===loginCode.success) {
+            if(data.data) {
+                console.log("okok",data.data)
+                setUser(data.data)
                 // window.location.href="/"
                 setLoading(false)
+                notification.success({
+                    message:"Login success",
+                })
             }
             else{
                 setLoading(false)
@@ -104,6 +109,7 @@ const LoginForm=()=>{
                 </Form>
             </div>
             <hr/>
+            {console.log("okok678",user)}
             <div className={"footer"}>
                 <p>Don't have an account? <a href={"/"}>Register</a></p>
             </div>
