@@ -43,7 +43,7 @@ const LoginForm=()=>{
                 <Form
                     name="basic"
                     labelCol={{
-                        span: 4,
+                        span: 5,
                     }}
                     wrapperCol={{
                         span: 20,
@@ -84,7 +84,7 @@ const LoginForm=()=>{
                         name="remember"
                         valuePropName="checked"
                         wrapperCol={{
-                            offset: 4,
+                            offset: 5,
                             span: 20,
                         }}
                     >
@@ -93,7 +93,7 @@ const LoginForm=()=>{
 
                     <Form.Item
                         wrapperCol={{
-                            offset: 4,
+                            offset: 5,
                             span: 20,
                         }}
                     >
@@ -105,7 +105,7 @@ const LoginForm=()=>{
             </div>
             <hr/>
             <div className={"footer"}>
-                <p>Don't have an account? <a href={"/"}>Register</a></p>
+                <p>Don't have an account? <a href={"/register"}>Register</a></p>
             </div>
         </div>
     )

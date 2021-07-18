@@ -3,6 +3,7 @@
 
 const  paths={
     HomePage:'/',
-    Login: '/login'
+    Login: '/login',
+    Register: '/register'
 }
 export default paths
