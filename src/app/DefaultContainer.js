@@ -5,12 +5,11 @@ import _ from 'lodash';
 const DefaultContainer=({route})=>{
     const {user} = useContext(AppContext)
     useEffect(()=>{
-        console.log("okok",user)
-        // if(_.isEmpty(user)) window.location.href="/login"
+        if(_.isEmpty(user)) window.location.href="/login"
     })
     return(
         <div>
-            {console.log("okok345",user)}
+            {console.log("okokchay")}
             {renderRoutes(route.routes)}
         </div>
     )

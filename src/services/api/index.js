@@ -8,7 +8,6 @@ export const createApiRequest= async  ({url,method,data,params}) =>{
             url:`${basePath}${url}`,
             data,
             params,
-            contentType : "text/plain"
         })
         return(
             {

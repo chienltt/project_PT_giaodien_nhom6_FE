@@ -2,7 +2,7 @@ import React, {useContext, useState} from "react";
 import {Button, Checkbox, Form, Input, notification} from "antd";
 import "./LoginContainer.scss"
 import 'antd/dist/antd.css';
-import {loginApi} from "./AccountApi";
+import {loginApi} from "../../services/api/AccountApi";
 import AppContext from "../../AppContext";
 
 

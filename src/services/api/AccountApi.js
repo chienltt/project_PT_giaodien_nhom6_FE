@@ -1,4 +1,4 @@
-import {createApiRequest} from "../../services/api";
+import {createApiRequest} from "./index";
 
 export const loginApi= (email,password)=>{
     const data={email,password}
