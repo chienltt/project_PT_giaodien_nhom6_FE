@@ -3,6 +3,7 @@ import paths from "./paths";
 import loginContainer from "../app/login/LoginContainer";
 import DefaultContainer from "../app/DefaultContainer";
 import UserPageContainer from "../app/user/UserPageContainer";
+import registerContainer from "../app/register/RegisterContainer";
 
 const router=[
     {
@@ -23,6 +24,11 @@ const router=[
                         component:UserPageContainer
                     }
                 ]
+            },
+            {
+                path: paths.Register,
+                exact:true,
+                component:registerContainer
             }
         ]
     }
