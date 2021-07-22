@@ -17,9 +17,8 @@ const LoginForm=()=>{
         const {data,success}=await loginApi(values.email,values.password)
         if(success){
             if(data.data) {
-                console.log("okok",data.data)
                 setUser(data.data)
-                // window.location.href="/"
+                window.location.href="/u/"
                 setLoading(false)
                 notification.success({
                     message:"Login success",

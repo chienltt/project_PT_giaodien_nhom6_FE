@@ -22,6 +22,10 @@ const router=[
                         path: paths.UserPage,
                         exact:true,
                         component:UserPageContainer
+                    },
+                    {
+                        path: paths.PostDetail(),
+                        // component:
                     }
                 ]
             },
