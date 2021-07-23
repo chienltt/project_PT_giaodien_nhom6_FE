@@ -24,7 +24,7 @@ const DefaultContainer=({route})=>{
                         <a className="nav-link" href="#">Products</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">User</a>
+                        <a className="nav-link" href={`${paths.UserList}`}>User</a>
                     </li>
                 </ul>
                 <ul className="navbar-nav ml-auto">
