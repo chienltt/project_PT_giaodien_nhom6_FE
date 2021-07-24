@@ -188,7 +188,7 @@ const dataTest =[
 
 
 const UserPageContainer = (props) => {
-    // postId = window.location.pathname - '/u/post_detail/'
+
     const {user} = useContext(AppContext)
     const [postData, setPostData] = useState([])
     const [isLoading,setIsLoading] = useState(false)
