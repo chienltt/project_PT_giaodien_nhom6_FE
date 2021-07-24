@@ -4,6 +4,7 @@ import loginContainer from "../app/login/LoginContainer";
 import DefaultContainer from "../app/DefaultContainer";
 import UserPageContainer from "../app/user/UserPageContainer";
 import registerContainer from "../app/register/RegisterContainer";
+import PostDetailContainer from "../app/post_detail/PostDetailContainer";
 
 const router=[
     {
@@ -25,7 +26,8 @@ const router=[
                     },
                     {
                         path: paths.PostDetail(),
-                        // component:
+                        exact: true,
+                        component:PostDetailContainer
                     }
                 ]
             },

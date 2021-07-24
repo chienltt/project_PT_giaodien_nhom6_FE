@@ -6,7 +6,7 @@ import {Input} from "antd";
 import {SearchOutlined} from '@ant-design/icons';
 
 const UserPageContainer = (props) => {
-    // postId = window.location.pathname - '/u/post_detail/'
+
     const {user} = useContext(AppContext)
     const [postData, setPostData] = useState({})
 
