@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {getAllData} from "../../services/api/GetPostData";
 import "./UserListContainer.scss"
-import AppContext from "../../AppContext";
 import paths from "../../router/paths";
 import 'antd/dist/antd.css';
 import { Input, Table, Space } from "antd";
@@ -64,7 +63,7 @@ const UserListContainer = (props) => {
                 </div>
                 <div className={"user__header--search"}>
                     <SearchOutlined className={"user__header--search-icon"}/>
-                    <Input onChange={onchange} placeholder={"User name, Email"}></Input>
+                    <Input onChange={onchange} placeholder={"User name, Email"}/>
                 </div>
             </div>
 
