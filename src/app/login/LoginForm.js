@@ -108,7 +108,6 @@ const LoginForm=()=>{
                 </Form>
             </div>
             <hr/>
-            {console.log("okok678",user)}
             <div className={"footer"}>
                 <p>Don't have an account? <a href={"/register"}>Register</a></p>
             </div>
