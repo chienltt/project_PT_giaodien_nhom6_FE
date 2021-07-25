@@ -2,9 +2,10 @@ import React, {useContext, useEffect, useState} from 'react'
 import {getPostDataByUserId} from "../../services/api/GetPostData";
 import AppContext from "../../AppContext";
 import UserInfoContainer from "./component/UserInfoContainer";
-import {Button, Input, List} from "antd";
+import {Button, Input, List, notification} from "antd";
 import PostDisplayCard from "../post/PostDisplayCard";
 import UploadPost from "../post/UploadPost";
+import {getUserDataById} from "../../services/api/getUserData";
 const { Search } = Input;
 
 const dataTest =[
@@ -190,24 +191,41 @@ const dataTest =[
 const UserPageContainer = (props) => {
 
     const {user} = useContext(AppContext)
+    const [userData,setUserData] = useState({})
     const [postData, setPostData] = useState([])
     const [isLoading,setIsLoading] = useState(false)
     const [newPostModalVisible,setNewPostModalVisible] = useState(false)
-
+    const userDataId=props.match.params.userId
+    const [isOwner,setIsOwner] = useState(false)
     useEffect(() => {
+        getUserData()
         getPostData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    const checkOwner = (id)=>{
+
+        if(user.id === id) return true
+        else return false
+    }
+
+    const getUserData = async ()=>{
+        const {data,success} = await getUserDataById(userDataId)
+        if(success) {
+            setUserData(data.data)
+            setIsOwner(checkOwner(data.data.id))
+        }else {
+            notification.error({
+                message:"Load user information failed",
+            })
+        }
+    }
+
     const getPostData = async () => {
         setIsLoading(true)
-        const {data, success} = await getPostDataByUserId(user.id)
+        const {data, success} = await getPostDataByUserId(userDataId)
         if (success) {
-            data.data = data.data.map(post => {
-                post.image_url = "https://file.chodocu.com//2018/08/08/16754143--9877.jpg"
-                return post
-            })
             setPostData(data.data)
-            setPostData(dataTest)
             setIsLoading(false)
         }
         else {
@@ -221,7 +239,6 @@ const UserPageContainer = (props) => {
             borderRadius: '5px'
         }}>
             {/*{console.log("okok",window.location.pathname)}*/}
-
             {/*{ user.userId === postData.user.userID ? <div> hello admin</div> : <div/>}*/}
             <div className={"row"}>
                 <div className={"col-xl-9 col-sm-12"} >
@@ -261,7 +278,7 @@ const UserPageContainer = (props) => {
                                 renderItem={post=>{
                                     return(
                                         <List.Item>
-                                            <PostDisplayCard  postData={post}/>
+                                            <PostDisplayCard isOwner={isOwner} postData={post}/>
                                         </List.Item>
                                     )
                                 }}
@@ -277,7 +294,7 @@ const UserPageContainer = (props) => {
                         boxShadow: " 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
                         padding:"15px"
                     }}>
-                        <UserInfoContainer />
+                        <UserInfoContainer user={userData} />
                     </div>
                 </div>
             </div>

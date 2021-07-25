@@ -3,7 +3,7 @@ const basePath= '/u'
 
 const  paths={
     HomePage:`${basePath}/`,
-    UserPage:`${basePath}/user_page`,
+    UserPage:(userId)=>`${basePath}/user_page/${userId||":userId"}`,
     UserList:`${basePath}/user_list`,
     Login: '/login',
     Register: '/register',

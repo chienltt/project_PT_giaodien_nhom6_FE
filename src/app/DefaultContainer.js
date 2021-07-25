@@ -15,27 +15,27 @@ const DefaultContainer=({route})=>{
             <nav className="navbar navbar-expand-sm navbar-light">
                 <ul className="navbar-nav">
                     <li className="navbar-brand">
-                        <img className={"img-logo"}/>
+                        <img className={"img-logo"} alt=""/>
                     </li>
-                    <li className="nav-item active">
-                        <a className="nav-link" href="#">Home page</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">Products</a>
+                    <li className={window.location.pathname === paths.HomePage?"nav-item active":"nav-item "}>
+                        <a className="nav-link" href={paths.HomePage}>Home page</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href={`${paths.UserList}`}>User</a>
+                        <a className="nav-link" href="#prevent-warning">Products</a>
+                    </li>
+                    <li className={window.location.pathname === paths.UserList?"nav-item active":"nav-item "}>
+                        <a className="nav-link" href={paths.UserList}>User</a>
                     </li>
                 </ul>
                 <ul className="navbar-nav ml-auto">
                     <li className={"personal-page nav-item"}>
-                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                           aria-haspopup="true"><UserOutlined/></a>
+                        <div className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true"><UserOutlined/></div>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a className="dropdown-item" href= {`${paths.UserPage}`} >
+                            <a className="dropdown-item" href= {paths.UserPage(user.id)} >
                                 personal page</a>
                             <div className="dropdown-divider"></div>
-                            <a className="dropdown-item" href="#">logout</a>
+                            <a className="dropdown-item" href="#prevent-warning">logout</a>
                         </div>
                     </li>
                 </ul>
@@ -43,6 +43,7 @@ const DefaultContainer=({route})=>{
             <div className={"content"}>
             {renderRoutes(route.routes)}
             </div>
+            <div id={"prevent-warning"}></div>
         </div>
     )
 }

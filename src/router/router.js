@@ -6,6 +6,7 @@ import UserPageContainer from "../app/user/UserPageContainer";
 import registerContainer from "../app/register/RegisterContainer";
 import UserListContainer from "../app/userList/UserListContainer";
 import PostDetailContainer from "../app/post_detail/PostDetailContainer";
+import HomePageContainer from "../app/homepage/HomePageContainer";
 
 const router=[
     {
@@ -21,7 +22,13 @@ const router=[
                 component:DefaultContainer,
                 routes:[
                     {
-                        path: paths.UserPage,
+                        path: paths.HomePage,
+                        exact: true,
+                        //nhat viet component nay
+                        component: HomePageContainer
+                    },
+                    {
+                        path: paths.UserPage(),
                         exact:true,
                         component:UserPageContainer
                     },
@@ -29,8 +36,6 @@ const router=[
                         path: paths.PostDetail(),
                         exact: true,
                         component:PostDetailContainer
-                    }
-                        // component:
                     },
                     {
                         path: paths.UserList,

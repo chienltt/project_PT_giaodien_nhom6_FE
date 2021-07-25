@@ -1,9 +1,8 @@
-import React, {useContext} from "react"
-import AppContext from "../../../AppContext";
+import React from "react"
 import "./UserInfoContainer.scss"
 
 const UserInfoContainer = (props) => {
-    const {user} = useContext(AppContext)
+    const user= props.user
     return (
         <div className={"info-content"} style={{margin: "15px"}}>
             <h5>Infomation</h5>

@@ -9,14 +9,14 @@ import AppContext from "../../AppContext";
 const LoginForm=()=>{
 
     const[loading,setLoading]=useState(false)
-    const {setUser,user}= useContext(AppContext)
+    const {setUser}= useContext(AppContext)
 
 
     const onSubmit=async (values)=> {
         setLoading(true)
         const {data,success}=await loginApi(values.email,values.password)
         if(success){
-            if(data.data) {
+            if(data.data.status_code !== 101) {
                 setUser(data.data)
                 window.location.href="/u/"
                 setLoading(false)

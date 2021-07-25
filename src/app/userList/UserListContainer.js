@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import {getAllData} from "../../services/api/GetPostData";
 import "./UserListContainer.scss"
 import paths from "../../router/paths";
 import 'antd/dist/antd.css';
 import { Input, Table, Space } from "antd";
 import { SearchOutlined } from '@ant-design/icons';
+import {getAllUserData} from "../../services/api/getUserData";
 
 let dataUsersBase;
 
@@ -15,7 +15,7 @@ const UserListContainer = (props) => {
         getAllUser()
     }, [])
     const getAllUser = async () => {
-        const {data, success} = await getAllData()
+        const {data, success} = await getAllUserData()
         if (success) {
             setData(data.data)
             dataUsersBase = data.data;
@@ -80,7 +80,7 @@ const UserListContainer = (props) => {
                         key="action"
                         render={(text, record) => (
                             <Space size="middle">
-                                <a href={`${paths.UserPage}/${record.id}`}>Detail {record.username}</a>
+                                <a href={`${paths.UserPage(record.id)}`}>Detail {record.username}</a>
                             </Space>
                         )}
                     />

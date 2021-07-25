@@ -73,6 +73,10 @@
   .post-action-btn{
     cursor: pointer;
     //padding:5px !important;
+    .disable-action-btn{
+      color: gray !important;
+      font-size: 20px;
+    }
   }
 }
 

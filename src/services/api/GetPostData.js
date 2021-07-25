@@ -13,10 +13,3 @@ export const getPostDataByPostId= (postId)=>{
         method:"GET"
     })
 }
-
-export const getAllData= ()=> {
-    return createApiRequest({
-        url:'/api/get_all_user',
-        method:"GET"
-    })
-}

@@ -1,20 +1,17 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useEffect, useState} from "react";
 import "./PostDetailContainer.scss";
-import UserInfoContainer from "../user/component/UserInfoContainer";
-import AppContext from "../../AppContext";
 import {getPostDataByPostId} from "../../services/api/GetPostData";
 
 const PostDetailContainer = (props) =>{
-
+    const postId= props.match.params.postId
     const [Data,PostData] = useState({});
 
     useEffect(() => {
         getPostData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const getPostData = async () => {
-        let pathName = window.location.pathname, //  /u/post_detail/2
-                name1= ' /u/post_detail/';
-        const {data, success} = await getPostDataByPostId(pathName.substr(15,3) )
+        const {data, success} = await getPostDataByPostId(postId)
         if (success) {
             //console.log(data.data)
             PostData(data.data)
@@ -25,12 +22,9 @@ const PostDetailContainer = (props) =>{
 
 
     return (
-        <div className={"container-fluid mt-3"} style={{
-            width: "95%", height: "500px",
-
-        }}>
+        <div className={"container-fluid mt-3"} >
             <div className={"row"}>
-                <div className={"col-xl-9 col-sm-12"} style={{height: "1300px"}}>
+                <div className={"col-xl-9 col-sm-12"}>
                     <div className={"post-table-content mt-3"} style={{
                         borderRadius: "5px",
                         height: "100%",
@@ -73,7 +67,6 @@ const PostDetailContainer = (props) =>{
                                 <img src={Data.image_url} alt="" style={{
                                     border: "2px solid #ddd",
                                     padding: "5px",
-                                    width: "500px"
                                 }}/>
                             </div>
                             <div>
@@ -87,10 +80,9 @@ const PostDetailContainer = (props) =>{
 
                     </div>
                 </div>
-                <div className={"col-xl-3 col-sm12"} style={{height: "1000px"}}>
+                <div className={"col-xl-3 col-sm12"} >
                     <div className={"post-table-content mt-3 p15"} style={{
                         borderRadius: "5px",
-                        height: "450px",
                         backgroundColor: "white",
                         boxShadow: " 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
                         paddingTop: "1px"
