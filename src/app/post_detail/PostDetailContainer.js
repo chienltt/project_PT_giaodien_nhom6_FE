@@ -67,6 +67,7 @@ const PostDetailContainer = (props) =>{
                                 <img src={Data.image_url} alt="" style={{
                                     border: "2px solid #ddd",
                                     padding: "5px",
+                                    maxWidth:"75%"
                                 }}/>
                             </div>
                             <div>

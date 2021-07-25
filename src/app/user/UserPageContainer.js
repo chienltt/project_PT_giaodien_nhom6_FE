@@ -29,7 +29,7 @@ const dataTest =[
         type: "Đồ điện tử",
         amount: 2,
         description: "Đồ con mới, mới sử dụng tử năm 2019",
-        image_url: "https://maytinhcdc.vn/media/news/399_8_may_tinh_de_ban_dell_nguyen_bo_2.jpg",
+        image_url: "https://file.chodocu.com//2018/08/08/16754143--9877.jpg",
         status: "available",
         created_at: "2021-07-16T05:59:49Z"
     },    {
@@ -121,7 +121,19 @@ const dataTest =[
         type: "Đồ điện tử",
         amount: 2,
         description: "Đồ con mới, mới sử dụng tử năm 2019",
-        image_url: "https://maytinhcdc.vn/media/news/399_8_may_tinh_de_ban_dell_nguyen_bo_2.jpg",
+        image_url: "https://file.chodocu.com//2018/08/08/16754143--9877.jpg",
+        status: "available",
+        created_at: "2021-07-16T05:59:49Z"
+    },
+    {
+        id : 4,
+        owner_id: 4,
+        name: "máy tính để bàn",
+        brand: "Dell",
+        type: "Đồ điện tử",
+        amount: 2,
+        description: "Đồ con mới, mới sử dụng tử năm 2019",
+        image_url: "https://file.chodocu.com//2018/08/08/16754143--9877.jpg",
         status: "available",
         created_at: "2021-07-16T05:59:49Z"
     },
@@ -157,19 +169,7 @@ const dataTest =[
         type: "Đồ điện tử",
         amount: 2,
         description: "Đồ con mới, mới sử dụng tử năm 2019",
-        image_url: "https://maytinhcdc.vn/media/news/399_8_may_tinh_de_ban_dell_nguyen_bo_2.jpg",
-        status: "available",
-        created_at: "2021-07-16T05:59:49Z"
-    },
-    {
-        id : 4,
-        owner_id: 4,
-        name: "máy tính để bàn",
-        brand: "Dell",
-        type: "Đồ điện tử",
-        amount: 2,
-        description: "Đồ con mới, mới sử dụng tử năm 2019",
-        image_url: "https://maytinhcdc.vn/media/news/399_8_may_tinh_de_ban_dell_nguyen_bo_2.jpg",
+        image_url: "https://file.chodocu.com//2018/08/08/16754143--9877.jpg",
         status: "available",
         created_at: "2021-07-16T05:59:49Z"
     },
@@ -287,7 +287,7 @@ const UserPageContainer = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className={"col-xl-3 col-sm12"} style={{height: "500px"}}>
+                <div className={"col-xl-3 col-sm12"}>
                     <div className={"post-table-content mt-3 p15"} style={{
                         borderRadius: "5px",
                         backgroundColor: "white",
