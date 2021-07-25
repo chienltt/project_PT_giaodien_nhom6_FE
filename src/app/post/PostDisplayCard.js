@@ -38,7 +38,6 @@ const PostDisplayCard = (props) => {
                     <Tooltip title={"See post details"} placement={"bottom"}>
                         <span className="mx-1 post-action-btn">
                             <DoubleRightOutlined style={{color: "blue", fontSize: "20px"}} onClick={()=>{
-                                console.log("okok",post)
                                 window.location.href= paths.PostDetail(post.id)
                             }}/>
                         </span>
