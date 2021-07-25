@@ -20,3 +20,10 @@ export const getAllPostWantToTrade= (productId) => {
         method:"GET"
     })
 }
+
+export const completeTrading= (transactionId) => {
+    return createApiRequest({
+        url: `/api/complete_transaction/${transactionId}`,
+        method: "POST"
+    })
+}

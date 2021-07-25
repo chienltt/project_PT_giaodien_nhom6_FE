@@ -1,20 +1,20 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import paths from "../../../router/paths";
 import 'antd/dist/antd.css';
-import {Table, Space, Tooltip} from "antd";
+import {Table, Space, Tooltip, notification} from "antd";
 import {DeleteOutlined, DoubleRightOutlined, InteractionOutlined} from '@ant-design/icons';
 import './PostDetailAdmin.scss'
 import {getAllPostWantToTrade} from "../../../services/api/GetPostData";
-import AppContext from "../../../AppContext";
+import {completeTrading} from "../../../services/api/GetPostData";
 
 const PostDetailAdmin = (props) => {
 
-    const {user} = useContext(AppContext)
     const [Datas, setDatas] = useState([])
     const postId = props.props.match.params.postId;
 
     useEffect(() => {
         getAllUser()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const getAllUser = async () => {
         const {data, success} = await getAllPostWantToTrade(postId)
@@ -28,6 +28,7 @@ const PostDetailAdmin = (props) => {
     for (let i = 0; i < Datas.length; i++) {
         dataUsers.push({
             key: Datas[i].trading_post.id,
+            transactionId: Datas[i].transaction_id,
             id: Datas[i].trading_post.id,
             name: Datas[i].trading_post.name,
             type: Datas[i].trading_post.type,
@@ -35,6 +36,24 @@ const PostDetailAdmin = (props) => {
             amount: Datas[i].trading_post.amount,
             description: Datas[i].trading_post.description,
         });
+    }
+
+    async function clickAccept(transactionId) {
+        console.log(transactionId, postId)
+        const {data, success} = await completeTrading(transactionId)
+        if (success) {
+            if (data.data.status_code === 200) {
+                console.log(data.data)
+                window.location.href= paths.PostDetail(postId)
+            }
+        }
+    }
+
+    function clickDelete() {
+        notification.error({
+            message: "Error",
+            description: "Hệ thống gặp sự cố, vui lòng thực hiện lại!"
+        })
     }
 
     const { Column } = Table;
@@ -61,12 +80,14 @@ const PostDetailAdmin = (props) => {
                                         <DoubleRightOutlined style={{color: "blue", fontSize: "16px"}} />
                                     </Tooltip>
                                 </a>
-                                <a href={"#"}>
+                                {/* eslint-disable-next-line no-undef */}
+                                <a onClick={() => clickAccept(record.transactionId, record.id)}>
                                     <Tooltip title={"Chấp nhận đổi"}>
                                         <InteractionOutlined style={{color: "green", fontSize: "16px"}} />
                                     </Tooltip>
                                 </a>
-                                <a href={"/Refuse"}>
+                                {/* eslint-disable-next-line no-undef */}
+                                <a onClick= {() => clickDelete()}>
                                     <Tooltip title={"Xóa lời mời"}>
                                         <DeleteOutlined style={{color: "red", fontSize: "16px"}} />
                                     </Tooltip>
