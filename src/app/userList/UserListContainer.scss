@@ -1,12 +1,10 @@
 .user__base {
   width: 90%;
   borderRadius: 5px;
-  position: relative;
 
   .user__header {
-    position: absolute;
-    top: 20px;
-    left: 5%;
+    margin-top: 30px;
+    margin-left: 5%;
     width: 100%;
     display: flex;
 
@@ -33,8 +31,7 @@
   }
 
   .user__container {
-    position: absolute;
-    top: 100px;
+    margin-top: 50px;
     width: 100%;
     background-color: #FFF;
     border: 1px solid black;

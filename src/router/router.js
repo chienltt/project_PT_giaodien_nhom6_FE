@@ -5,7 +5,7 @@ import DefaultContainer from "../app/DefaultContainer";
 import UserPageContainer from "../app/user/UserPageContainer";
 import registerContainer from "../app/register/RegisterContainer";
 import UserListContainer from "../app/userList/UserListContainer";
-import PostDetailContainer from "../app/post_detail/PostDetailContainer";
+import PostDetailContainer from "../app/postDetail/PostDetailContainer";
 import HomePageContainer from "../app/homepage/HomePageContainer";
 
 const router=[

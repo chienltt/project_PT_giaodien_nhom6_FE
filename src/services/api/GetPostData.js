@@ -13,3 +13,10 @@ export const getPostDataByPostId= (postId)=>{
         method:"GET"
     })
 }
+
+export const getAllPostWantToTrade= (productId) => {
+    return createApiRequest({
+        url: `/api/get_product_want_to_trade_with/${productId}`,
+        method:"GET"
+    })
+}
