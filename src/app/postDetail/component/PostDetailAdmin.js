@@ -39,13 +39,10 @@ const PostDetailAdmin = (props) => {
     }
 
     async function clickAccept(transactionId) {
-        console.log(transactionId, postId)
         const {data, success} = await completeTrading(transactionId)
-        if (success) {
-            if (data.data.status_code === 200) {
-                console.log(data.data)
-                window.location.href= paths.PostDetail(postId)
-            }
+        if (data.data.status_code === 200) {
+            console.log(data.data)
+            window.location.href= paths.PostDetail(postId)
         }
     }
 
