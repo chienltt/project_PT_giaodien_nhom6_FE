@@ -197,6 +197,7 @@ const UserPageContainer = (props) => {
     const [newPostModalVisible,setNewPostModalVisible] = useState(false)
     const userDataId=props.match.params.userId
     const [isOwner,setIsOwner] = useState(false)
+    const [newPostId,setNewPostId] = useState()
     useEffect(() => {
         getUserData()
         getPostData()
@@ -226,6 +227,7 @@ const UserPageContainer = (props) => {
         const {data, success} = await getPostDataByUserId(userDataId)
         if (success) {
             setPostData(data.data)
+            setNewPostId(data.data[data.data.length-1].id+1)
             setIsLoading(false)
         }
         else {
@@ -298,7 +300,7 @@ const UserPageContainer = (props) => {
                     </div>
                 </div>
             </div>
-            <UploadPost visible={newPostModalVisible} setVisible={setNewPostModalVisible}/>
+            <UploadPost newPostId={newPostId} visible={newPostModalVisible} setVisible={setNewPostModalVisible}/>
         </div>
     )
 }
