@@ -3,6 +3,7 @@ import React, {useContext, useState} from "react";
 import {PlusOutlined} from "@ant-design/icons";
 import UploadFirebase from "../firebase/UploadFirebase";
 import AppContext from "../../AppContext";
+import {uploadPostData} from "../../services/api/UploadPostData";
 
 const UploadPost = (props) => {
     const {user} = useContext(AppContext)
@@ -35,14 +36,31 @@ const UploadPost = (props) => {
         }))
     }
     const handleSubmit = async (value)=>{
+        let valueData={}
         if(value.imageDescription)
             value.imageDescription.fileList = changeNameDescriptionImage(value)
-
         value.mainImage.fileList=changeNameMainImage(value)
+
         const dataMainImage= await uploadDataImageToStorage(value.mainImage.fileList)
-        console.log("okok123",dataMainImage)
         const dataDescribeImages= value.imageDescription? await uploadDataImageToStorage(value.imageDescription.fileList):null
-        console.log("okok456",dataDescribeImages)
+
+        value.image_url=  dataMainImage +","+ dataDescribeImages.map(imageUrl => { return imageUrl})
+        valueData.name= value.name
+        valueData.description= value.description
+        valueData.brand=value.brand
+        valueData.type = value.type
+        valueData.owner_id=user.id
+        valueData.amount=value.quantity
+        valueData.image_url = value.image_url
+
+        uploadPostData(valueData)
+    }
+
+    const UploadDataPost = (value) =>{
+        const {data,success} = uploadPostData(value)
+        if (success){
+            console.log("okok",data)
+        }
     }
 
     const changeNameMainImage = (value)=>{

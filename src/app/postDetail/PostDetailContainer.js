@@ -78,6 +78,8 @@ const PostDetailContainer = (props) =>{
                             </div>
                         </div>
                     </div>
+                    {/*{ user.id === ownerId ? <PostDetailAdmin props= {props} /> : <div></div>}*/}
+                    <PostDetailAdmin props= {props} />
                 </div>
                 <div className={"col-xl-3 col-sm12"} >
                     <div className={"mt-3 p15"} style={{
@@ -111,7 +113,7 @@ const PostDetailContainer = (props) =>{
                     </div>
                 </div>
             </div>
-            { user.id === ownerId ? <PostDetailAdmin props= {props} /> : <div></div>}
+
         </div>
         )
 }

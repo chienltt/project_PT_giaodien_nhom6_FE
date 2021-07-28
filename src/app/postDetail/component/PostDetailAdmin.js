@@ -72,7 +72,7 @@ const PostDetailAdmin = (props) => {
                         key="action"
                         render={(text, record) => (
                             <Space size="large">
-                                <a href={`${paths.UserPage(record.id)}`}>
+                                <a href={`${paths.PostDetail(record.id)}`}>
                                     <Tooltip title={"Xem chi tiết"}>
                                         <DoubleRightOutlined style={{color: "blue", fontSize: "16px"}} />
                                     </Tooltip>

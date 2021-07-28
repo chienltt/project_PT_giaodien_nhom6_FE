@@ -227,7 +227,8 @@ const UserPageContainer = (props) => {
         const {data, success} = await getPostDataByUserId(userDataId)
         if (success) {
             setPostData(data.data)
-            setNewPostId(data.data[data.data.length-1].id+1)
+            if (data.data.length >=1 )setNewPostId(data.data[data.data.length-1].id+1)
+            else setNewPostId(1)
             setIsLoading(false)
         }
         else {
@@ -252,7 +253,7 @@ const UserPageContainer = (props) => {
                     }}>
 
                         <div style={{padding:"10px"}}> <h5 style={{fontSize:"22px",fontWeight:"800",display:"inline"}}>Danh sách các bài đăng:</h5>
-                            <Button style={{float:"right"}} type={"primary"} onClick={()=>setNewPostModalVisible(true)}> Tạo bài đăng mới </Button></div>
+                            <Button disabled={ user.id ==userDataId ? false : true} style={{float:"right"}} type={"primary"} onClick={()=>setNewPostModalVisible(true)}> Tạo bài đăng mới </Button></div>
                         <div className={"search_post"} style={{paddingTop:"10px",paddingBottom:"20px",display: "flex", justifyContent:"center"}}>
                             <Search
                                 placeholder="search post by name,id"
