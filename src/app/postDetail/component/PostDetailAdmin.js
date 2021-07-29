@@ -5,7 +5,7 @@ import {Table, Space, Tooltip, notification} from "antd";
 import {DeleteOutlined, DoubleRightOutlined, InteractionOutlined} from '@ant-design/icons';
 import './PostDetailAdmin.scss'
 import {getAllPostWantToTrade} from "../../../services/api/GetPostData";
-import {completeTrading} from "../../../services/api/GetPostData";
+import {completeTrading} from "../../../services/api/AccountApi";
 
 const PostDetailAdmin = (props) => {
 
@@ -41,7 +41,6 @@ const PostDetailAdmin = (props) => {
     async function clickAccept(transactionId) {
         const {data, success} = await completeTrading(transactionId)
         if (data.data.status_code === 200) {
-            console.log(data.data)
             window.location.href= paths.PostDetail(postId)
         }
     }
