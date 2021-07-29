@@ -1,16 +1,13 @@
 import React, {useContext, useEffect, useState} from 'react';
-import AppContext from "../../AppContext";
-import { Input, List, notification} from "antd";
+import { Input, List } from "antd";
 import PostDisplayCard from "./component/PostDisplayCard";
 import { getAllPostData, getPostBySearch } from "../../services/api/GetPostData";
 const { Search } = Input;
 
 const ProductContainer = (props) => {
 
-    const {user} = useContext(AppContext)
     const [postData, setPostData] = useState([])
     const [isLoading,setIsLoading] = useState(false)
-    const userDataId=props.match.params.userId
 
     useEffect(() => {
         getAllPostDatas()
@@ -27,11 +24,9 @@ const ProductContainer = (props) => {
     }
 
     const getAllPostSearch = async (event) => {
-        console.log(event)
         setIsLoading(true)
         const {data, success} = await getPostBySearch(event)
         if (success) {
-            console.log(data.data)
             setPostData(data.data)
             setIsLoading(false)
         }

@@ -1,30 +1,11 @@
-import React, {useState} from 'react'
-import {notification, Tooltip} from "antd";
+import React from 'react'
+import {Tooltip} from "antd";
 import "./PostDisplayCard.scss"
 import { DoubleRightOutlined, InteractionOutlined } from '@ant-design/icons';
 import paths from "../../../router/paths";
-import {creatTransaction} from "../../../services/api/AccountApi";
 
 const PostDisplayCard = (props) => {
-    console.log(props)
     const post = props.postData
-    const [isLoading,setIsLoading] = useState(false)
-    const from_post_id = post.id
-
-    const creatTransactions = async (to_post_id) => {
-        setIsLoading(true)
-        const {data, success} = await creatTransaction(from_post_id, to_post_id)
-        if (data.data.status_code === 200) {
-            setIsLoading(false)
-            notification.success({
-                message:"Gửi yêu cầu thành công!",
-            })
-        }
-    }
-
-    function clickExchange(to_post_id) {
-        creatTransactions(to_post_id)
-    }
 
     return (
         <div className={"post-card-item-card"}>
@@ -37,7 +18,7 @@ const PostDisplayCard = (props) => {
 
                     <Tooltip title={"Exchange this product"} placement={"bottom"}>
                         <span className="mx-1 post-action-btn">
-                            <InteractionOutlined style={{color: "green", fontSize: "20px"}} onClick={()=>clickExchange(post.id)}/>
+                            <InteractionOutlined style={{color: "green", fontSize: "20px"}}/>
                         </span>
                     </Tooltip>
                     <Tooltip title={"See post details"} placement={"bottom"}>
