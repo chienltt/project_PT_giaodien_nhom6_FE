@@ -50,7 +50,7 @@ const UploadPost = (props) => {
         valueData.brand=value.brand
         valueData.type = value.type
         valueData.owner_id=user.id
-        valueData.amount=value.quantity
+        valueData.amount=Number(value.quantity)
         valueData.image_url = value.image_url
 
         uploadPostData(valueData)
