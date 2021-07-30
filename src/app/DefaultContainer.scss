@@ -1,15 +1,16 @@
+
+
 .bg-color{
   min-height: 100vh;
   background-image: url("../images/home_background.png");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
-  padding-bottom: 30px;
-  .navbar-group{
+  background-position: cover;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 
     .navbar-firstline {
         background-color:white;
-        position: center;
         width: 100%;
         height: 72px;
         z-index: 999;
@@ -69,13 +70,6 @@
         }
       }
     }
-    //.navbar-secondline{
-    //  display: flex;
-    //  background-color:#D1BA86;
-    //  width: 100%;
-    //  border-bottom-left-radius: 20px;
-    //  box-shadow: #333333;
-
       .nav-item {
         padding-top: 5px;
         margin-left: 10px;
@@ -153,10 +147,6 @@
         }
       }
 
-
-
-
-
     .personal-page {
           padding-top: 0px !important;
           float: right;
@@ -168,7 +158,7 @@
           }
     }
 
-  }
+
   .content{
     padding-top: 80px;
   }
