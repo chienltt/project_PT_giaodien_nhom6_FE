@@ -21,7 +21,7 @@ const DefaultContainer=({route})=>{
                         <a className="nav-link" href={paths.HomePage}>Home page</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#prevent-warning">Products</a>
+                        <a className="nav-link" href={paths.Product}>Products</a>
                     </li>
                     <li className={window.location.pathname === paths.UserList?"nav-item active":"nav-item "}>
                         <a className="nav-link" href={paths.UserList}>User</a>
@@ -35,7 +35,7 @@ const DefaultContainer=({route})=>{
                             <a className="dropdown-item" href= {paths.UserPage(user.id)} >
                                 personal page</a>
                             <div className="dropdown-divider"></div>
-                            <a className="dropdown-item" href="#prevent-warning">logout</a>
+                            <a className="dropdown-item" href="/login">logout</a>
                         </div>
                     </li>
                 </ul>

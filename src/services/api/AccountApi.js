@@ -9,3 +9,14 @@ export const loginApi= (email,password)=>{
     })
     return result
 }
+
+export const completeTrading= (transactionId) => {
+    const data={transactionId}
+    const result= createApiRequest({
+        url: `/api/complete_transaction`,
+        method: "POST",
+        data:  data
+    })
+    return result
+}
+

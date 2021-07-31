@@ -15,8 +15,9 @@ const LoginForm=()=>{
     const onSubmit=async (values)=> {
         setLoading(true)
         const {data,success}=await loginApi(values.email,values.password)
+        console.log(data)
         if(success){
-            if(data.data.status_code !== 101) {
+            if(data.data.status_code !== 101 && data.data.status_code !== 202) {
                 setUser(data.data)
                 window.location.href="/u/"
                 setLoading(false)
