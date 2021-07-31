@@ -76,7 +76,7 @@ const ProductContainer = (props) => {
                                     renderItem={post=>{
                                         return(
                                             <List.Item>
-                                                <PostDisplayCard postData={post}/>
+                                                <PostDisplayCard isChoosing={false} postData={post}/>
                                             </List.Item>
                                         )
                                     }}
