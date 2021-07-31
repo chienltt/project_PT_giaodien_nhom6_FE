@@ -7,12 +7,18 @@ import AppContext from "../../../AppContext";
 import UserListPostModal from "../../user/component/UserListPostModal";
 
 const PostDisplayCard = (props) => {
+    console.log(props)
     const {user}  = useContext(AppContext)
     const post = props.postData
     const isChoosing = props.isChoosing
     const isSelected =props.isSelected
     const setPostSelected = props.setPostSelected
     const [modalUserPostVisible,setModalUserPostVisible] = useState(false)
+
+    const checkOwner = (id) => {
+        if (user.id === id) return true
+        else return false
+    }
 
     return (
         <div className={post.id !== isSelected ? "post-card-item-card": "post-card-item-card selected-post"}
@@ -24,9 +30,10 @@ const PostDisplayCard = (props) => {
                 <h2 className={"post-card-item-card-title"}>{post.name} </h2>
                 {!isChoosing?<div className={"post-card-item-card__text-details-wrapper"}>
 
-                    <Tooltip title={"Exchange this product"} placement={"bottom"}>
+                    <Tooltip title={!checkOwner(post.owner_id) ? "Exchange this product" : "Disable with you"} placement={"bottom"}>
                         <span onClick={() => setModalUserPostVisible(true)} className="mx-1 post-action-btn">
-                            <InteractionOutlined style={{color: "green", fontSize: "20px"}}/>
+                            <InteractionOutlined className={checkOwner(post.owner_id) ? "disable-action-btn" : ""}
+                                                 style={{color: "green", fontSize: "20px"}}/>
                         </span>
                     </Tooltip>
                     <Tooltip title={"See post details"} placement={"bottom"}>
