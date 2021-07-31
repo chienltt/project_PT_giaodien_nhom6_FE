@@ -6,6 +6,7 @@ import "./DefaultContainer.scss"
 import {SearchOutlined, UserOutlined} from '@ant-design/icons';
 import paths from "../router/paths";
 import {Input} from "antd";
+import Footer from "./homepage/Footer";
 
 
 
@@ -62,6 +63,7 @@ const DefaultContainer=({route})=>{
                 {renderRoutes(route.routes)}
             </div>
             <div id={"prevent-warning"}></div>
+            {/*<Footer/>*/}
         </div>
 
     </div>
