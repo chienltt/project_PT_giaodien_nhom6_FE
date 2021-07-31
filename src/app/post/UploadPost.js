@@ -1,4 +1,4 @@
-import {Button, Form, Input, Modal, Upload} from "antd";
+import {Button, Form, Input, Modal, notification, Upload} from "antd";
 import React, {useContext, useState} from "react";
 import {PlusOutlined} from "@ant-design/icons";
 import UploadFirebase from "../firebase/UploadFirebase";
@@ -53,14 +53,19 @@ const UploadPost = (props) => {
         valueData.amount=Number(value.quantity)
         valueData.image_url = value.image_url
 
-        uploadPostData(valueData)
+        UploadDataPost(valueData)
     }
 
     const UploadDataPost = (value) =>{
-        const {data,success} = uploadPostData(value)
+        const {success} = uploadPostData(value)
         if (success){
-            console.log("okok",data)
+            notification.success({
+                message:"Upload successfully"
+            })
         }
+        else notification.error({
+            message:"Upload failed"
+        })
     }
 
     const changeNameMainImage = (value)=>{

@@ -1,15 +1,18 @@
-import {Button, List, Modal} from "antd";
+import { List, Modal, notification} from "antd";
 import PostDisplayCard from "../../post/PostDisplayCard";
 import React, {useEffect, useState} from "react";
 import Search from "antd/lib/input/Search";
 import {getPostDataByUserId} from "../../../services/api/GetPostData";
+import {createTransaction} from "../../../services/api/Transaction";
 
 
 const UserListPostModal = (props) => {
+    const postDataIdTo = props.postDataIdTo
     const visible = props.visible
     const user = props.user
     const setVisible=props.setVisible
     const [postData, setPostData] = useState([])
+    const [postDataSource, setPostDataSource] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [isSelected,setIsSelected] = useState()
 
@@ -20,17 +23,44 @@ const UserListPostModal = (props) => {
 
     const getPostData = async () => {
         setIsLoading(true)
-        const {data, success} = await getPostDataByUserId(5)
+        const {data, success} = await getPostDataByUserId(user.id)
         if (success) {
             setPostData(data.data)
+            setPostDataSource(data.data)
             setIsLoading(false)
         } else {
             setIsLoading(false)
         }
     }
 
+    const onSearch = (value) => {
+        if (value === "") setPostData(postDataSource)
+        else {
+            const newData = postData.filter((post) => {
+                if (post.name.includes(value) || post.id === Number(value)) return post
+                else return null
+            })
+            setPostData(newData)
+        }
+    }
+
+    const createNewTransaction =async ()=>{
+        const {data,success} = await createTransaction(isSelected,postDataIdTo)
+        if(success){
+            if( data.data.status_code===200) {
+                notification.success({
+                    message:"Update successfully"
+                })
+            }
+            else notification.error({
+                message:"Update failed"
+            })
+        }
+        setVisible(false)
+    }
+
     return (
-        <Modal visible={visible} onCancel={()=>{setVisible(false)}}
+        <Modal visible={visible} onOk={()=>createNewTransaction()} onCancel={()=>{setVisible(false)}}
             width={"1000px"}
         >
                 <div style={{padding: "10px"}}><h5 style={{fontSize: "22px", fontWeight: "800", display: "inline"}}>Chọn sản phẩm bạn muốn trao đổi:</h5>
@@ -42,7 +72,8 @@ const UserListPostModal = (props) => {
                             enterButton="Search"
                             size="large"
                             style={{width: "75%"}}
-                            // onSearch={onSearch}
+                            onSearch={(value) => onSearch(value)}
+                            onChange={(data)=>onSearch(data.target.value)}
                         />
                     </div>
                     <div className={"list_post_content_border"}

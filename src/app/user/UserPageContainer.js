@@ -244,6 +244,7 @@ const UserPageContainer = (props) => {
         else {
             const newData = postData.filter((post) => {
                 if (post.name.includes(value) || post.id === Number(value)) return post
+                else return null
             })
             setPostData(newData)
         }
@@ -268,7 +269,7 @@ const UserPageContainer = (props) => {
                         <div style={{padding: "10px"}}><h5
                             style={{fontSize: "22px", fontWeight: "800", display: "inline"}}>Danh sách các bài
                             đăng:</h5>
-                            <Button disabled={user.id == userDataId ? false : true} style={{float: "right"}}
+                            <Button disabled={user.id === Number(userDataId) ? false : true} style={{float: "right"}}
                                     type={"primary"} onClick={() => setNewPostModalVisible(true)}> Tạo bài đăng
                                 mới </Button></div>
                         <div className={"search_post"} style={{

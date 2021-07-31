@@ -39,7 +39,7 @@ const PostDetailAdmin = (props) => {
     }
 
     async function clickAccept(transactionId) {
-        const {data, success} = await completeTrading(transactionId)
+        const {data} = await completeTrading(transactionId)
         if (data.data.status_code === 200) {
             console.log(data.data)
             window.location.href= paths.PostDetail(postId)
@@ -78,17 +78,17 @@ const PostDetailAdmin = (props) => {
                                     </Tooltip>
                                 </a>
                                 {/* eslint-disable-next-line no-undef */}
-                                <a onClick={() => clickAccept(record.transactionId, record.id)}>
+                                <div onClick={() => clickAccept(record.transactionId, record.id)}>
                                     <Tooltip title={"Chấp nhận đổi"}>
                                         <InteractionOutlined style={{color: "green", fontSize: "16px"}} />
                                     </Tooltip>
-                                </a>
+                                </div>
                                 {/* eslint-disable-next-line no-undef */}
-                                <a onClick= {() => clickDelete()}>
+                                <div onClick= {() => clickDelete()}>
                                     <Tooltip title={"Xóa lời mời"}>
                                         <DeleteOutlined style={{color: "red", fontSize: "16px"}} />
                                     </Tooltip>
-                                </a>
+                                </div>
                             </Space>
                         )}
                     />

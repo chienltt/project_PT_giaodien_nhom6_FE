@@ -56,7 +56,7 @@ const PostDisplayCard = (props) => {
                     </Tooltip>
                 </div>:<div/>}
             </div>
-            <UserListPostModal visible ={modalUserPostVisible} setVisible={setModalUserPostVisible} user={user}/>
+            <UserListPostModal postDataIdTo={post.id} visible ={modalUserPostVisible} setVisible={setModalUserPostVisible} user={user}/>
         </div>
     )
 }

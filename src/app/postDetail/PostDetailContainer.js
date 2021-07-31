@@ -1,13 +1,11 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useEffect, useState} from "react";
 import "./PostDetailContainer.scss";
 import { getPostDataByPostId } from "../../services/api/GetPostData";
 import { getUserDataById } from "../../services/api/getUserData";
 import PostDetailAdmin from "./component/PostDetailAdmin";
-import AppContext from "../../AppContext";
+
 
 const PostDetailContainer = (props) =>{
-
-    const {user} = useContext(AppContext)
     const [postData,setPostData] = useState([]);
     const [userData,setUserData] = useState({});
     const postId = props.match.params.postId;
