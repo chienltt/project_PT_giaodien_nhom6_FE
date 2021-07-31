@@ -7,7 +7,6 @@ import AppContext from "../../../AppContext";
 import UserListPostModal from "../../user/component/UserListPostModal";
 
 const PostDisplayCard = (props) => {
-    console.log(props)
     const {user}  = useContext(AppContext)
     const post = props.postData
     const isChoosing = props.isChoosing
