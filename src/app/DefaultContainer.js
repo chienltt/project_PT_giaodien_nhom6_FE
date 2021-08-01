@@ -17,7 +17,7 @@ const DefaultContainer=({route})=>{
         <div className={"bg-color"} >
             <div className="navbar-firstline navbar-expand-sm navbar-light ">
                 <div className="navbar-logo">
-                    <img className={"img-logo"} alt=""/>
+                    <div className={"img-logo"}/>
                 </div>
 
                 <div className="navbar-search" >
