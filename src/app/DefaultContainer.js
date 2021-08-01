@@ -5,6 +5,8 @@ import _ from 'lodash';
 import "./DefaultContainer.scss"
 import {SearchOutlined, UserOutlined} from '@ant-design/icons';
 import paths from "../router/paths";
+import Footer from "./homepage/Footer";
+import {Input} from "antd";
 const DefaultContainer=({route})=>{
     const {user} = useContext(AppContext)
     useEffect(()=>{

@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import { Input, List } from "antd";
 import PostDisplayCard from "./component/PostDisplayCard";
 import { getAllPostData, getPostBySearch } from "../../services/api/GetPostData";
