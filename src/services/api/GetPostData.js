@@ -21,9 +21,16 @@ export const getAllPostWantToTrade= (productId) => {
     })
 }
 
-export const completeTrading= (transactionId) => {
+export const getAllPostData= () => {
     return createApiRequest({
-        url: `/api/complete_transaction/${transactionId}`,
-        method: "POST"
+        url: `/api/get_all_post`,
+        method:"GET"
+    })
+}
+
+export const getPostBySearch= (keyword) => {
+    return createApiRequest({
+        url: `/api/search_post/${keyword}`,
+        method:"GET"
     })
 }
