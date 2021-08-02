@@ -12,6 +12,13 @@ const DefaultContainer=({route})=>{
     useEffect(()=>{
         if(_.isEmpty(user)) window.location.href="/login"
     })
+
+    const onClick = () => {
+        if (window.location.pathname === paths.HomePage) {
+            window.location.href = paths.Product;
+        }
+    }
+
     return(
     <div>
         <div className={"bg-color"} >
@@ -22,7 +29,10 @@ const DefaultContainer=({route})=>{
 
                 <div className="navbar-search" >
                     <div className={"search-form"}>
-                        <Input  className={"post-search-form"}  placeholder={"Search items you need here "}/>
+                        <Input className={"post-search-form"}
+                               placeholder={"Search items you need here "}
+                               onClick={() => onClick()}
+                        />
                         <SearchOutlined className={"search-icon"}/>
                     </div>
                 </div>
@@ -31,7 +41,7 @@ const DefaultContainer=({route})=>{
                     <a className="nav-link btn btn-one" id="homepage" href={paths.HomePage}><span className="spot"></span>Home page</a>
                 </div>
                 <div className="nav-item">
-                    <a className="nav-link btn btn-one" href="#prevent-warning">Products</a>
+                    <a className="nav-link btn btn-one" href={paths.Product}>Products</a>
                 </div>
                 <div className={window.location.pathname === paths.UserList?"nav-item active":"nav-item "}>
                     <a className="nav-link btn btn-one" href={paths.UserList}>User</a>
@@ -45,16 +55,12 @@ const DefaultContainer=({route})=>{
                             <a className="dropdown-item" href= {paths.UserPage(user.id)} >
                                 personal page</a>
                             <div className="dropdown-divider"></div>
-                            <a className="dropdown-item" href="#prevent-warning">logout</a>
+                            <a className="dropdown-item" href="/login">logout</a>
                         </div>
                     </div>
                 </div>
 
             </div>
-
-
-
-
 
             <div className={"content"}>
                 {renderRoutes(route.routes)}

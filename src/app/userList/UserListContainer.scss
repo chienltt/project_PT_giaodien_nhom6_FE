@@ -25,6 +25,10 @@
       border-radius: 3px;
       align-items: center;
 
+      input {
+        padding-bottom: 5px;
+      }
+
       .user__header--search-icon {
         padding: 8.8px 12px;
         background-color: #FFF;
