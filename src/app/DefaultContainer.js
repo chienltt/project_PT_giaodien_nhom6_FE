@@ -30,7 +30,7 @@ const DefaultContainer=({route})=>{
                 <div className="navbar-search" >
                     <div className={"search-form"}>
                         <Input className={"post-search-form"}
-                               placeholder={"Search items you need here "}
+                               placeholder={"Tìm những sản phẩm bạn cần ở đây nhé ^^  "}
                                onClick={() => onClick()}
                         />
                         <SearchOutlined className={"search-icon"}/>
@@ -38,13 +38,13 @@ const DefaultContainer=({route})=>{
                 </div>
 
                 <div className={window.location.pathname === paths.HomePage?"nav-item active":"nav-item "}>
-                    <a className="nav-link btn btn-one" id="homepage" href={paths.HomePage}><span className="spot"></span>Home page</a>
+                    <a className="nav-link btn btn-one" id="homepage" href={paths.HomePage}><span className="spot"></span>Trang chủ</a>
                 </div>
                 <div className="nav-item">
-                    <a className="nav-link btn btn-one" href={paths.Product}>Products</a>
+                    <a className="nav-link btn btn-one" href={paths.Product}>Sản phẩm</a>
                 </div>
                 <div className={window.location.pathname === paths.UserList?"nav-item active":"nav-item "}>
-                    <a className="nav-link btn btn-one" href={paths.UserList}>User</a>
+                    <a className="nav-link btn btn-one" href={paths.UserList}>Người dùng</a>
                 </div>
 
                 <div className="navbar-nav ml-auto">
@@ -53,9 +53,9 @@ const DefaultContainer=({route})=>{
                              aria-haspopup="true"><UserOutlined/></div>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a className="dropdown-item" href= {paths.UserPage(user.id)} >
-                                personal page</a>
+                                Trang cá nhân</a>
                             <div className="dropdown-divider"></div>
-                            <a className="dropdown-item" href="/login">logout</a>
+                            <a className="dropdown-item" href="/login">Đăng xuất</a>
                         </div>
                     </div>
                 </div>
@@ -66,6 +66,10 @@ const DefaultContainer=({route})=>{
                 {renderRoutes(route.routes)}
             </div>
             <div id={"prevent-warning"}></div>
+        </div>
+
+        <div class="bg2">
+            <div className="bg2-title col-xl-12 col-sm 12"> <strong>FAQs</strong> </div>
         </div>
         <Footer/>
 

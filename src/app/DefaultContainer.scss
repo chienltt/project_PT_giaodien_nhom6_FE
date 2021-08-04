@@ -10,7 +10,7 @@
   margin-bottom: 0px;
 
     .navbar-firstline {
-        background-color:white;
+        background-color:snow;
         width: 100%;
         height: 72px;
         z-index: 999;
@@ -162,5 +162,21 @@
 
   .content{
     padding-top: 80px;
+  }
+}
+.bg2{
+  min-height: 80vh;
+  background: #0a9161;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: cover;
+  padding-bottom: 30px;
+  margin-bottom: 0px;
+  .bg2-title{
+    font-size:30px;
+    color: white;
+    text-align: center;
+    padding: 50px;
+    border: 5px solid red;
   }
 }
