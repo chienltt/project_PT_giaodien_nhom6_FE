@@ -14,15 +14,6 @@ const ProductContainer = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const getAllPostDatas = async () => {
-        setIsLoading(true)
-        const {data, success} = await getAllPostData()
-        if (success) {
-            setPostData(data.data)
-            setIsLoading(false)
-        }
-    }
-
     const getAllPostSearch = async (event) => {
         setIsLoading(true)
         const {data, success} = await getPostBySearch(event)
@@ -34,6 +25,19 @@ const ProductContainer = (props) => {
 
     function onSearch(event) {
         getAllPostSearch(event)
+    }
+
+    const getAllPostDatas = async () => {
+        setIsLoading(true)
+        const {data, success} = await getAllPostData()
+        if (success) {
+            setPostData(data.data)
+            setIsLoading(false)
+            if (localStorage['keySearch']) {
+                onSearch(localStorage['keySearch'])
+                localStorage['keySearch'] = '';
+            }
+        }
     }
 
     return (

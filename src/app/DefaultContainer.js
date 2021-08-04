@@ -6,17 +6,16 @@ import "./DefaultContainer.scss"
 import {SearchOutlined, UserOutlined} from '@ant-design/icons';
 import paths from "../router/paths";
 import Footer from "./homepage/Footer";
-import {Input} from "antd";
+import Search from "antd/es/input/Search";
 const DefaultContainer=({route})=>{
     const {user} = useContext(AppContext)
     useEffect(()=>{
         if(_.isEmpty(user)) window.location.href="/login"
     })
 
-    const onClick = () => {
-        if (window.location.pathname === paths.HomePage) {
-            window.location.href = paths.Product;
-        }
+    const onSearch = (key) => {
+        localStorage.setItem('keySearch', `${key}`)
+        window.location.href = paths.Product;
     }
 
     return(
@@ -29,11 +28,10 @@ const DefaultContainer=({route})=>{
 
                 <div className="navbar-search" >
                     <div className={"search-form"}>
-                        <Input className={"post-search-form"}
+                        <Search className={"post-search-form"}
                                placeholder={"Search items you need here "}
-                               onClick={() => onClick()}
+                               onSearch={(key) => onSearch(key)}
                         />
-                        <SearchOutlined className={"search-icon"}/>
                     </div>
                 </div>
 
