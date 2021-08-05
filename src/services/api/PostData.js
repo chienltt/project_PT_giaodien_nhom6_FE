@@ -34,3 +34,13 @@ export const getPostBySearch= (keyword) => {
         method:"GET"
     })
 }
+
+export const deletePost =(id)=>{
+    return createApiRequest({
+        url:`/api/deactivate_post`,
+        method:"POST",
+        data:{
+            "post_id": id
+        }
+    })
+}

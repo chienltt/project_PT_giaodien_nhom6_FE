@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import paths from "../../../router/paths";
 import 'antd/dist/antd.css';
 import {Table, Space, Tooltip, notification} from "antd";
 import {DeleteOutlined, DoubleRightOutlined, InteractionOutlined} from '@ant-design/icons';
 import './PostDetailAdmin.scss'
-import {getAllPostWantToTrade} from "../../../services/api/GetPostData";
+import {getAllPostWantToTrade} from "../../../services/api/PostData";
 import {completeTrading} from "../../../services/api/AccountApi";
+import AppContext from "../../../AppContext";
 
 const PostDetailAdmin = (props) => {
-
+    const {user}= useContext(AppContext)
     const [Datas, setDatas] = useState([])
     const postId = props.props.match.params.postId;
 
@@ -19,7 +20,6 @@ const PostDetailAdmin = (props) => {
     const getAllUser = async () => {
         const {data, success} = await getAllPostWantToTrade(postId)
         if (success) {
-            console.log(data.data)
             setDatas(data.data)
         }
     }
@@ -55,6 +55,7 @@ const PostDetailAdmin = (props) => {
     const { Column } = Table;
     return (
         <div style={{backgroundColor: "#fff", marginTop: "30px", borderRadius: "5px", border: "1px solid black"}}>
+            {console.log("okok123", props.ownerPost)}
             <h1 style={{color:"Black", textAlign:"center",
                 fontSize:"28px" , paddingTop:"20px",
             }}>Danh sách sản phẩm muốn trao đổi</h1>
@@ -77,9 +78,9 @@ const PostDetailAdmin = (props) => {
                                     </Tooltip>
                                 </a>
                                 {/* eslint-disable-next-line no-undef */}
-                                <div onClick={() => clickAccept(record.transactionId, record.id)}>
+                                <div onClick={props.ownerPost===user.id?() => clickAccept(record.transactionId, record.id):null}>
                                     <Tooltip title={"Chấp nhận đổi"}>
-                                        <InteractionOutlined style={{color: "green", fontSize: "16px"}} />
+                                        <InteractionOutlined style={props.ownerPost===user.id?{color: "green",cursor:"pointer", fontSize: "16px"}:{color: "gray", fontSize: "16px"}} />
                                     </Tooltip>
                                 </div>
                                 {/* eslint-disable-next-line no-undef */}

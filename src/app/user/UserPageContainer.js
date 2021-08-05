@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react'
-import {getPostDataByUserId} from "../../services/api/GetPostData";
+import {getPostDataByUserId} from "../../services/api/PostData";
 import AppContext from "../../AppContext";
 import UserInfoContainer from "./component/UserInfoContainer";
 import {Button, Input, List, notification} from "antd";

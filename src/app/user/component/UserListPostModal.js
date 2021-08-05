@@ -2,7 +2,7 @@ import { List, Modal, notification} from "antd";
 import PostDisplayCard from "../../post/PostDisplayCard";
 import React, {useEffect, useState} from "react";
 import Search from "antd/lib/input/Search";
-import {getPostDataByUserId} from "../../../services/api/GetPostData";
+import {getPostDataByUserId} from "../../../services/api/PostData";
 import {createTransaction} from "../../../services/api/Transaction";
 
 

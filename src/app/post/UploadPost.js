@@ -44,7 +44,11 @@ const UploadPost = (props) => {
         const dataMainImage= await uploadDataImageToStorage(value.mainImage.fileList)
         const dataDescribeImages= value.imageDescription? await uploadDataImageToStorage(value.imageDescription.fileList):null
 
-        value.image_url=  dataMainImage +","+ dataDescribeImages.map(imageUrl => { return imageUrl})
+        value.image_url=dataMainImage
+        for (let i=0;i<dataDescribeImages.length;i++){
+            value.image_url=value.image_url+" "+dataDescribeImages[i]
+        }
+        // value.image_url=  dataMainImage +" "+ dataDescribeImages.map(imageUrl => { return imageUrl})
         valueData.name= value.name
         valueData.description= value.description
         valueData.brand=value.brand
@@ -56,9 +60,10 @@ const UploadPost = (props) => {
         UploadDataPost(valueData)
     }
 
-    const UploadDataPost = (value) =>{
-        const {success} = uploadPostData(value)
+    const UploadDataPost = async (value) =>{
+        const {success} = await uploadPostData(value)
         if (success){
+            window.location.reload()
             notification.success({
                 message:"Upload successfully"
             })

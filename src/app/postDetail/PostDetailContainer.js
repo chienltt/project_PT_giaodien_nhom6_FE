@@ -1,15 +1,17 @@
-import React, { useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./PostDetailContainer.scss";
-import { getPostDataByPostId } from "../../services/api/GetPostData";
-import { getUserDataById } from "../../services/api/getUserData";
+import {getPostDataByPostId} from "../../services/api/PostData";
+import {getUserDataById} from "../../services/api/getUserData";
 import PostDetailAdmin from "./component/PostDetailAdmin";
+import {Image} from "antd";
 
 
-const PostDetailContainer = (props) =>{
-    const [postData,setPostData] = useState([]);
-    const [userData,setUserData] = useState({});
+const PostDetailContainer = (props) => {
+    const [postData, setPostData] = useState([]);
+    const [userData, setUserData] = useState({});
+    const [additionalImages, setAdditionalImages] = useState([]);
     const postId = props.match.params.postId;
-    let ownerId = {};
+    const [ownerId,setOwnerId]=useState();
 
     useEffect(() => {
         getPostData()
@@ -19,10 +21,19 @@ const PostDetailContainer = (props) =>{
     const getPostData = async () => {
         const {data, success} = await getPostDataByPostId(postId)
         if (success) {
+            console.log("okok1", data.data.owner_id)
             setPostData(data.data)
-            ownerId = data.data.owner_id
+            setAdditionalImages(data.data.additional_image)
+            setOwnerId(data.data.owner_id)
             getUserData()
         }
+    }
+    const showAdditionalImages = () => {
+        return additionalImages.map(imgURL => {
+            return (
+                <Image className={"image-post-list"} src={imgURL} alt=""/>
+            )
+        })
     }
 
     const getUserData = async () => {
@@ -33,7 +44,7 @@ const PostDetailContainer = (props) =>{
     }
 
     return (
-        <div className={"container-fluid mt-3"} >
+        <div className={"container-fluid mt-3"}>
             <div className={"row"}>
                 <div className={"col-xl-9 col-sm-12"}>
                     <div className={"mt-3"} style={{
@@ -41,32 +52,39 @@ const PostDetailContainer = (props) =>{
                         backgroundColor: "white",
                         boxShadow: " 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
                     }}>
-                        <h1 style={{color:"Black", textAlign:"center" ,fontSize:"36px" , paddingTop:"20px"}}>Chi tiết sản phẩm</h1>
-                        <div style={{ padding:"40px" ,lineHeight:"36px" ,fontSize:"18px" }} >
+                        <h1 style={{color: "Black", textAlign: "center", fontSize: "36px", paddingTop: "20px"}}>Chi tiết
+                            sản phẩm</h1>
+                        <div style={{padding: "40px", lineHeight: "36px", fontSize: "18px"}}>
                             <div>
                                 <strong>Tên sản phẩm:</strong> <span>{postData.name}</span>
                             </div>
                             <div>
                                 <strong>Phân loại:</strong> <span>{postData.type}</span>
                             </div>
-                           <div>
-                               <strong>Hãng/Nhà sản xuất:</strong> <span>{postData.brand}</span>
-                           </div>
+                            <div>
+                                <strong>Hãng/Nhà sản xuất:</strong> <span>{postData.brand}</span>
+                            </div>
                             <div>
                                 <strong>Số lượng:</strong> <span>{postData.amount}</span>
                             </div>
                             <div>
                                 <strong>Mô tả:</strong> <span>{postData.description}</span>
                             </div>
-                            <div >
-                                <strong>Ảnh:</strong>
+                            <div>
+                                <strong>Ảnh chính:</strong>
                             </div>
                             <div>
-                                <img src={postData.image_url} alt="" style={{
+                                <Image src={postData.main_image} alt="" style={{
                                     border: "2px solid #ddd",
-                                    padding: "5px",
-                                    maxWidth:"75%"
+                                    height:"200px"
                                 }}/>
+                            </div>
+                            {additionalImages.length !== 0 ?
+                                <div>
+                                    <strong>Ảnh mô tả:</strong>
+                                </div> : <div/>}
+                            <div>
+                                {showAdditionalImages()}
                             </div>
                             <div>
                                 <strong>Trạng thái:</strong> <span>{postData.status}</span>
@@ -77,16 +95,17 @@ const PostDetailContainer = (props) =>{
                         </div>
                     </div>
                     {/*{ user.id !== ownerId ? <PostDetailAdmin props= {props} /> : <div></div>}*/}
-                    <PostDetailAdmin props= {props} />
+                    <PostDetailAdmin ownerPost={ownerId} props={props}/>
                 </div>
-                <div className={"col-xl-3 col-sm12"} >
+                <div className={"col-xl-3 col-sm12"}>
                     <div className={"mt-3 p15"} style={{
                         borderRadius: "5px",
                         backgroundColor: "white",
                         boxShadow: " 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
                         paddingTop: "1px"
                     }}>
-                        <div className={"info-content"} style={{margin: "15px", padding: "10px 0 30px", lineHeight: "36px"}}>
+                        <div className={"info-content"}
+                             style={{margin: "15px", padding: "10px 0 30px", lineHeight: "36px"}}>
                             <h5>Infomation about Trader </h5>
                             <div>
                                 <strong>User Name:</strong> <span>{userData.username}</span>
@@ -113,6 +132,6 @@ const PostDetailContainer = (props) =>{
             </div>
 
         </div>
-        )
+    )
 }
 export default PostDetailContainer
