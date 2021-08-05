@@ -75,6 +75,9 @@ const ProductContainer = (props) => {
                                         xl: 4,
                                         xxl: 5,
                                     }}
+                                    pagination={{
+                                        pageSize: 12
+                                    }}
                                     dataSource={postData}
                                     loading={isLoading}
                                     renderItem={post=>{
