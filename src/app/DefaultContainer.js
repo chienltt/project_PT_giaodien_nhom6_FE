@@ -6,17 +6,16 @@ import "./DefaultContainer.scss"
 import {SearchOutlined, UserOutlined} from '@ant-design/icons';
 import paths from "../router/paths";
 import Footer from "./homepage/Footer";
-import {Input} from "antd";
+import Search from "antd/es/input/Search";
 const DefaultContainer=({route})=>{
     const {user} = useContext(AppContext)
     useEffect(()=>{
         if(_.isEmpty(user)) window.location.href="/login"
     })
 
-    const onClick = () => {
-        if (window.location.pathname === paths.HomePage) {
-            window.location.href = paths.Product;
-        }
+    const onSearch = (key) => {
+        localStorage.setItem('keySearch', `${key}`)
+        window.location.href = paths.Product;
     }
 
     return(
@@ -29,22 +28,21 @@ const DefaultContainer=({route})=>{
 
                 <div className="navbar-search" >
                     <div className={"search-form"}>
-                        <Input className={"post-search-form"}
-                               placeholder={"Tìm những sản phẩm bạn cần ở đây nhé ^^  "}
-                               onClick={() => onClick()}
+                        <Search className={"post-search-form"}
+                               placeholder={"Search items you need here "}
+                               onSearch={(key) => onSearch(key)}
                         />
-                        <SearchOutlined className={"search-icon"}/>
                     </div>
                 </div>
 
                 <div className={window.location.pathname === paths.HomePage?"nav-item active":"nav-item "}>
-                    <a className="nav-link btn btn-one" id="homepage" href={paths.HomePage}><span className="spot"></span>Trang chủ</a>
+                    <a className="nav-link btn btn-one" id="homepage" href={paths.HomePage}><span className="spot"></span>Home page</a>
                 </div>
                 <div className="nav-item">
-                    <a className="nav-link btn btn-one" href={paths.Product}>Sản phẩm</a>
+                    <a className="nav-link btn btn-one" href={paths.Product}>Products</a>
                 </div>
                 <div className={window.location.pathname === paths.UserList?"nav-item active":"nav-item "}>
-                    <a className="nav-link btn btn-one" href={paths.UserList}>Người dùng</a>
+                    <a className="nav-link btn btn-one" href={paths.UserList}>User</a>
                 </div>
 
                 <div className="navbar-nav ml-auto">
@@ -53,9 +51,9 @@ const DefaultContainer=({route})=>{
                              aria-haspopup="true"><UserOutlined/></div>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a className="dropdown-item" href= {paths.UserPage(user.id)} >
-                                Trang cá nhân</a>
+                                personal page</a>
                             <div className="dropdown-divider"></div>
-                            <a className="dropdown-item" href="/login">Đăng xuất</a>
+                            <a className="dropdown-item" href="/login">logout</a>
                         </div>
                     </div>
                 </div>
@@ -66,10 +64,6 @@ const DefaultContainer=({route})=>{
                 {renderRoutes(route.routes)}
             </div>
             <div id={"prevent-warning"}></div>
-        </div>
-
-        <div class="bg2">
-            <div className="bg2-title col-xl-12 col-sm 12"> <strong>FAQs</strong> </div>
         </div>
         <Footer/>
 
