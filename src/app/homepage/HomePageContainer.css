@@ -1,39 +1,115 @@
-.hm-pg{
-    background-color: ;
-    /*float: right ;*/
-
-}
+/*2 dong text o home page*/
 .hm-pg-text1{
-    color: #6484b8;
-    font-size: 40px;
-    font-weight: 100;
-    letter-spacing: 2px;
+    color: #1d3e74;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
     text-transform: uppercase;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     float: right ;
     text-align: center;
 
-    margin-right: 30px;
-    margin-top: 5px;
+    margin-right: 170px;
+    margin-top: 0px;
     padding-top: 10px ;
     padding-bottom: 0px;
+
 
 
 }
 .hm-pg-text2{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    font-size: 30px;
-    color:#0a9161;
-    font-weight: 300;
+    font-size: 38px;
+    color:#287056;
+    font-weight: 100;
     letter-spacing: 2px;
     text-transform: uppercase;
     text-align: center;
+    float: right ;
     position: absolute;
-    top:570px;
-    right:400px;
-}
+    top:600px;
+    right:300px;
+    padding-top: 20px;
 
+}
 strong{
     font-weight: bold;
 }
 
+/*Icon trong text2*/
+.row2-iconpack{
+    display:flex;
+    font-size:15px;
+    margin-bottom: -10px;
+}
+.col1 {
+    margin: -30px 60px 10px 70px;
+    text-align: center;
+}
+.icon1 {
+    background: url("../../images/iconpack/cash.png");
+    width: 80px;
+    height: 80px;
+    background-color: inherit;
+    margin-left: 10px;
+}
+
+.col2 {
+    margin: -30px 40px 10px 80px;
+    text-align: center;
+}
+.icon2{
+    background: url("../../images/iconpack/environment.png");
+    width : 80px;
+    height: 80px;
+    background-color: inherit;
+
+
+}
+.col3{
+    margin: -30px 50px 10px 80px;
+    text-align: center;
+
+}
+.icon3{
+    background: url("../../images/iconpack/co-operate.png");
+    width : 80px;
+    height: 80px;
+    background-color: none;
+}
+/*Grow effect hover*/
+.grow {
+    transition: all .2s ease-in-out;
+}
+.grow:hover {
+    transform: scale(1.2);
+    color: #3c382f;
+    font-weight: bold;
+}
+/*Show information when hover*/
+
+/* Tooltip text */
+.tooltiptext {
+    position: absolute;
+    visibility: hidden;
+    width: 300px;
+    background-color: floralwhite;
+    color: black;
+    text-align: left;
+    padding: 10px 10px;
+    border-radius: 10px;
+    font-size: 10px;
+
+    /* Position the tooltip text - see examples below! */
+    z-index: 1;
+}
+/* Show the tooltip text when you mouse over the tooltip container */
+.col1:hover .tooltiptext1 {
+    visibility: visible;
+}
+.col2:hover .tooltiptext2 {
+    visibility: visible;
+}
+.col3:hover .tooltiptext3 {
+    visibility: visible;
+}
