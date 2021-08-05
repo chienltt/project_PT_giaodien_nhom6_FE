@@ -6,18 +6,16 @@ import "./DefaultContainer.scss"
 import {SearchOutlined, UserOutlined} from '@ant-design/icons';
 import paths from "../router/paths";
 import Footer from "./homepage/Footer";
-import {Input} from "antd";
-import {removeLocalStorage} from "../services/storage/LocalStorage";
+import Search from "antd/es/input/Search";
 const DefaultContainer=({route})=>{
     const {user} = useContext(AppContext)
     useEffect(()=>{
         if(_.isEmpty(user)) window.location.href="/login"
     })
 
-    const onClick = () => {
-        if (window.location.pathname === paths.HomePage) {
-            window.location.href = paths.Product;
-        }
+    const onSearch = (key) => {
+        localStorage.setItem('keySearch', `${key}`)
+        window.location.href = paths.Product;
     }
 
     return(
@@ -30,11 +28,10 @@ const DefaultContainer=({route})=>{
 
                 <div className="navbar-search" >
                     <div className={"search-form"}>
-                        <Input className={"post-search-form"}
+                        <Search className={"post-search-form"}
                                placeholder={"Search items you need here "}
-                               onClick={() => onClick()}
+                               onSearch={(key) => onSearch(key)}
                         />
-                        <SearchOutlined className={"search-icon"}/>
                     </div>
                 </div>
 
@@ -56,9 +53,7 @@ const DefaultContainer=({route})=>{
                             <a className="dropdown-item" href= {paths.UserPage(user.id)} >
                                 personal page</a>
                             <div className="dropdown-divider"></div>
-                            <a className="dropdown-item" href="/login" onClick={()=>{
-                                removeLocalStorage('user')
-                            }}>logout</a>
+                            <a className="dropdown-item" href="/login">logout</a>
                         </div>
                     </div>
                 </div>
