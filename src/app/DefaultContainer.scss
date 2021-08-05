@@ -164,19 +164,45 @@
     padding-top: 80px;
   }
 }
+//FAQ
 .bg2{
   min-height: 80vh;
   background: #0a9161;
   background-size: cover;
-  background-repeat: no-repeat;
-  background-position: cover;
   padding-bottom: 30px;
   margin-bottom: 0px;
   .bg2-title{
-    font-size:30px;
+    font-size:25px;
     color: white;
     text-align: center;
-    padding: 50px;
-    border: 5px solid red;
+    padding: 30px;
+  }
+  .faq{
+    font-size:15px;
+    color: black;
+    text-align: left;
+    padding: 10px;
+    margin: auto  ;
+    .faq-ques {
+      margin-bottom: 30px;
+      padding:20px;
+      border-radius: 40px;
+      background-color: floralwhite;
+      //border: 5px solid red;
+      .faq-ans{
+        font-size: 15px;
+        margin-left: 20px;
+      }
+    }
+  }
+  .grow2:after{
+    content:'';
+    font-size: 15px;
+  }
+  .grow2:hover:after{
+    content:'📧Email: chien8b123@gmail.com';
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 20px;
   }
 }

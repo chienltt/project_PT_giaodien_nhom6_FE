@@ -19,7 +19,9 @@ const DefaultContainer=({route})=>{
         }
     }
 
+
     return(
+
     <div>
         <div className={"bg-color"} >
             <div className="navbar-firstline navbar-expand-sm navbar-light ">
@@ -70,10 +72,57 @@ const DefaultContainer=({route})=>{
 
         <div class="bg2">
             <div className="bg2-title col-xl-12 col-sm 12"> <strong>FAQs</strong> </div>
+            <div className="faq col-xl-9 col-sm 12">
+                <div className="faq-ques grow ">
+                    <h5>🔸Tại sao tôi nên dùng Old items exchange ?</h5>
+                    <div className="faq-ans" style={{display:"block"}}>
+                        <strong>↪️Old items exchange là một trang web hoàn toàn miễn phí giúp bạn tìm được những thứ mà mình muốn😍.
+                            Đó là công cụ để bạn khai thác giá trị từ những món đồ cũ của mình,đồng thời giúp bạn tiết kiệm tiền bạc💵,
+                            giảm thiểu lượng khí thải🌫 và kết nối với mọi người👨‍👨‍👧‍👦.
+                        </strong>
+
+                    </div>
+                </div>
+                <div className="faq-ques grow">
+                    <h5>🔸Tôi có thể đăng tải và trao đổi những loại mặt hàng nào ?</h5>
+                    <div className="faq-ans" style={{display:"block"}}>
+                        <strong>
+                            ↪️Bạn có thể đăng tải rất nhiều thứ từ quần áo👚👕️👖, giầy dép, trang sức👟👠, máy tính💻, điện thoại📱, các thiết bị điện tử🖨🎮📸, đồ nội thất🏚🏘,
+                            đồ chơi️🔫, sách vở📖📙, dụng cụ thể thao🎾️🏓, đồ sưu tầm như tem, thẻ,.... Có rất nhiều thứ đang chờ bạn trao đổi !
+                        </strong>
+
+                    </div>
+                </div>
+                <div className="faq-ques grow">
+                    <h5>🔸Quá trình trao đổi diễn ra như thế nào ?</h5>
+                    <div className="faq-ans" style={{display:"block"}}>
+                        <strong>
+                            ↪️Làm theo các bước sau :
+                                <p>Bước 1. Đăng tải sản phẩm bằng cách chụp vài bức ảnh và viết mô <tả className=""></tả></p>
+                                <p>Bước 2. Chọn sản phẩm bạn muốn trao đổi.</p>
+                                <p>Bước 3. Đợi xác nhận từ người đăng tải và liên hệ để thương lượng hợp lý</p>
+
+                        </strong>
+
+                    </div>
+                </div>
+                <div className="faq-ques grow2">
+                    <h5>🔸Câu hỏi khác</h5>
+                    <div className="faq-ans" style={{display:"block"}}>
+                        <strong>
+                            ↪️Hãy liên hệ với chúng tôi để nhận được phản hồi sớm nhất nhé !
+
+                        </strong>
+
+                    </div>
+                </div>
+
+            </div>
         </div>
         <Footer/>
 
     </div>
     )
+
 }
 export default DefaultContainer
