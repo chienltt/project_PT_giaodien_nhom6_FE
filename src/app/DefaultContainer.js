@@ -7,6 +7,7 @@ import {SearchOutlined, UserOutlined} from '@ant-design/icons';
 import paths from "../router/paths";
 import Footer from "./homepage/Footer";
 import {Input} from "antd";
+import {removeLocalStorage} from "../services/storage/LocalStorage";
 const DefaultContainer=({route})=>{
     const {user} = useContext(AppContext)
     useEffect(()=>{
@@ -55,7 +56,9 @@ const DefaultContainer=({route})=>{
                             <a className="dropdown-item" href= {paths.UserPage(user.id)} >
                                 personal page</a>
                             <div className="dropdown-divider"></div>
-                            <a className="dropdown-item" href="/login">logout</a>
+                            <a className="dropdown-item" href="/login" onClick={()=>{
+                                removeLocalStorage('user')
+                            }}>logout</a>
                         </div>
                     </div>
                 </div>
