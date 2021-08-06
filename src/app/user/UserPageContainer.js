@@ -87,12 +87,16 @@ const UserPageContainer = (props) => {
                         padding: "10px"
                     }}>
 
-                        <div style={{padding: "10px"}}><h5
-                            style={{fontSize: "22px", fontWeight: "800", display: "inline"}}>Danh sách các bài
-                            đăng:</h5>
+                        <div style={{padding: "10px"}}>
+                            <h5
+                                style={{fontSize: "22px", fontWeight: "800", display: "inline"}}>Danh sách các bài
+                                đăng:
+                            </h5>
                             <Button disabled={user.id === Number(userDataId) ? false : true} style={{float: "right"}}
                                     type={"primary"} onClick={() => setNewPostModalVisible(true)}> Tạo bài đăng
-                                mới </Button></div>
+                                mới
+                            </Button>
+                        </div>
                         <div className={"search_post"} style={{
                             paddingTop: "10px",
                             paddingBottom: "20px",
@@ -107,7 +111,7 @@ const UserPageContainer = (props) => {
                                 style={{width: "75%"}}
                                 disabled={isLoading}
                                 onSearch={(value) => onSearch(value)}
-                                onChange={(data)=>onSearch(data.target.value)}
+                                onChange={(data) => onSearch(data.target.value)}
                             />
                         </div>
                         <div className={"list_post_content_border"}
@@ -136,7 +140,7 @@ const UserPageContainer = (props) => {
                             </div>
                         </div>
                     </div>
-                    <TransactionHistoryOfUser userId={userDataId}/>
+                    {isOwner===true? <TransactionHistoryOfUser userId={userDataId}/>:<div/>}
                 </div>
                 <div className={"col-xl-3 col-sm12"}>
                     <div className={"post-table-content mt-3 p15"} style={{

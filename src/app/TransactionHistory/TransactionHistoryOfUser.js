@@ -1,7 +1,9 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {getTransHisbyUserId} from "../../services/api/TransactionHistoryApi";
 import {notification} from "antd";
 import paths from "../../router/paths";
+import {Table} from "antd/es";
+import "./TransactionHistoryOfUser.scss"
 
 const TransactionHistoryOfUser=(props)=>{
     const userId= props.userId
@@ -13,9 +15,9 @@ const TransactionHistoryOfUser=(props)=>{
     },[])
 
     const getDataTrans=async ()=>{
-        const {data,success} = await getTransHisbyUserId(1)
+        const {data,success} = await getTransHisbyUserId(userId)
         if(success){
-            console.log("okok",data)
+            setData(data.data)
         }
         else {
             notification.error("can't load transaction history!")
@@ -36,17 +38,19 @@ const TransactionHistoryOfUser=(props)=>{
         {
             title: 'Sản phẩm yêu cầu',
             dataIndex: 'from_post_name',
-            render: (name,record) => <a href={paths.UserPage(record.from_post_id)}>{name}</a>,
+            render: (name,record) => <a href={paths.PostDetail(record.from_post_id)}>{name}</a>,
         },
         {
             title: 'Sản phẩm chấp nhận',
             dataIndex: 'to_post_name',
-            render: (name,record) =><a href={paths.UserPage(record.to_post_id)}>{name}</a>,
+            render: (name,record) =><a href={paths.PostDetail(record.to_post_id)}>{name}</a>,
         },
         {
             title: 'Trạng thái',
             dataIndex: 'status',
-            render: status => <div>{status}</div>,
+            render: status => <div style={status==="Completed"? {color:"green",fontWeight:"900"}:
+                                            status==="rejected"?{color:"red",fontWeight:"900"}
+                                                :{color:"blue",fontWeight:"900"}}>{status}</div>,
         },
         {
             title: 'Mô tả',
@@ -59,8 +63,16 @@ const TransactionHistoryOfUser=(props)=>{
             render: time => <div>{time}</div>,
         },
     ]
-    return(<div>
 
+    return(<div className={"table-trans-his-container"}>
+        <h5
+            style={{fontSize: "22px",marginBottom:"20px", fontWeight: "800", display: "inline"}}>Lịch sử trao đổi của bạn:
+        </h5>
+        <Table
+            className={"table-trans-his-content"}
+            columns={column}
+            dataSource={data}
+        />
     </div>)
 }
 export default TransactionHistoryOfUser

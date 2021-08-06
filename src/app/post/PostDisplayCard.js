@@ -6,6 +6,7 @@ import paths from "../../router/paths";
 import AppContext from "../../AppContext";
 import UserListPostModal from "../user/component/UserListPostModal";
 import {deletePost} from "../../services/api/PostData";
+import EditPost from "./EditPost";
 
 const PostDisplayCard = (props) => {
     const {user}  = useContext(AppContext)
@@ -14,6 +15,7 @@ const PostDisplayCard = (props) => {
     const isChoosing = props.isChoosing
     const isSelected =props.isSelected
     const setPostSelected = props.setPostSelected
+    const [editPostModalVisible,setEditPostModalVisible] = useState(false)
 
     const unavailablePost= async (id)=>{
         const {success} = await deletePost(id)
@@ -33,7 +35,7 @@ const PostDisplayCard = (props) => {
     return (
         <div className={post.id !== isSelected ? "post-card-item-card": "post-card-item-card selected-post"}
             onClick={isChoosing?()=>{setPostSelected(post.id)}:null}>
-            <Tooltip title={"your active post"}>
+            <Tooltip title={"available post"}>
                 <img className={"post-card-image"} src={post.main_image} alt={"Can't load this img"}/>
             </Tooltip>
             <div className={"post-card-item-card__text-wrapper"}>
@@ -41,7 +43,7 @@ const PostDisplayCard = (props) => {
                 {!isChoosing?<div className={"post-card-item-card__text-details-wrapper"}>
 
                     <Tooltip title={isOwner ? "Update post information" : "Disable with you"} placement={"bottom"}>
-                        <span className="mx-1 post-action-btn">
+                        <span className="mx-1 post-action-btn" onClick={isOwner ? ()=>{setEditPostModalVisible(true)}:null}>
                             <ToolOutlined className={!isOwner ? "disable-action-btn" : ""}
                                           style={{color: "black", fontSize: "20px"}}/>
                         </span>
@@ -71,6 +73,7 @@ const PostDisplayCard = (props) => {
                 </div>:<div/>}
             </div>
             <UserListPostModal postDataIdTo={post.id} visible ={modalUserPostVisible} setVisible={setModalUserPostVisible} user={user}/>
+            <EditPost postData={post} newPostId={post.id} visible={editPostModalVisible} setVisible={setEditPostModalVisible}/>
         </div>
     )
 }

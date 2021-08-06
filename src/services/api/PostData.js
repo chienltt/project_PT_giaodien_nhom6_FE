@@ -44,3 +44,10 @@ export const deletePost =(id)=>{
         }
     })
 }
+export const editPostData = (value)=>{
+    return createApiRequest({
+        url:'/api/edit_post',
+        method:"POST",
+        data:value
+    })
+}

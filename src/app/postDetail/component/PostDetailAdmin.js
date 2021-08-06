@@ -55,7 +55,6 @@ const PostDetailAdmin = (props) => {
     const { Column } = Table;
     return (
         <div style={{backgroundColor: "#fff", marginTop: "30px", borderRadius: "5px", border: "1px solid black"}}>
-            {console.log("okok123", props.ownerPost)}
             <h1 style={{color:"Black", textAlign:"center",
                 fontSize:"28px" , paddingTop:"20px",
             }}>Danh sách sản phẩm muốn trao đổi</h1>
@@ -84,9 +83,9 @@ const PostDetailAdmin = (props) => {
                                     </Tooltip>
                                 </div>
                                 {/* eslint-disable-next-line no-undef */}
-                                <div onClick= {() => clickDelete()}>
+                                <div onClick= {props.ownerPost===user.id?() => clickDelete():null}>
                                     <Tooltip title={"Xóa lời mời"}>
-                                        <DeleteOutlined style={{color: "red", fontSize: "16px"}} />
+                                        <DeleteOutlined style={props.ownerPost===user.id?{color: "red", fontSize: "16px"}:{color: "gray", fontSize: "16px"}} />
                                     </Tooltip>
                                 </div>
                             </Space>
