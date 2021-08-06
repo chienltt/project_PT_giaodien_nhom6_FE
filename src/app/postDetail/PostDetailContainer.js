@@ -96,7 +96,7 @@ const PostDetailContainer = (props) => {
                             </div>
                         </div>
                     </div>
-                    { user.id === ownerId ? <PostDetailAdmin props= {props} /> : <div></div>}
+                    { user.id === ownerId ? <PostDetailAdmin ownerPost={ownerId} props= {props} /> : <div></div>}
                     {/*<PostDetailAdmin ownerPost={ownerId} props={props}/>*/}
                 </div>
                 <div className={"col-xl-3 col-sm12"}>
