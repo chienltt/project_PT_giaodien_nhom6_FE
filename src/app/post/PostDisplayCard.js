@@ -35,43 +35,43 @@ const PostDisplayCard = (props) => {
     return (
         <div className={post.id !== isSelected ? "post-card-item-card": "post-card-item-card selected-post"}
             onClick={isChoosing?()=>{setPostSelected(post.id)}:null}>
-            <Tooltip title={"available post"}>
-                <img className={"post-card-image"} src={post.main_image} alt={"Can't load this img"}/>
-            </Tooltip>
-            <div className={"post-card-item-card__text-wrapper"}>
-                <h2 className={"post-card-item-card-title"}>{post.name} </h2>
-                {!isChoosing?<div className={"post-card-item-card__text-details-wrapper"}>
+            {/*<Tooltip title={"available post"}>*/}
+            {/*    <img className={"post-card-image"} src={post.main_image} alt={"Can't load this img"}/>*/}
+            {/*</Tooltip>*/}
+            {/*<div className={"post-card-item-card__text-wrapper"}>*/}
+            {/*    <h2 className={"post-card-item-card-title"}>{post.name} </h2>*/}
+            {/*    {!isChoosing?<div className={"post-card-item-card__text-details-wrapper"}>*/}
 
-                    <Tooltip title={isOwner ? "Update post information" : "Disable with you"} placement={"bottom"}>
-                        <span className="mx-1 post-action-btn" onClick={isOwner ? ()=>{setEditPostModalVisible(true)}:null}>
-                            <ToolOutlined className={!isOwner ? "disable-action-btn" : ""}
-                                          style={{color: "black", fontSize: "20px"}}/>
-                        </span>
-                    </Tooltip>
+            {/*        <Tooltip title={isOwner ? "Update post information" : "Disable with you"} placement={"bottom"}>*/}
+            {/*            <span className="mx-1 post-action-btn" onClick={isOwner ? ()=>{setEditPostModalVisible(true)}:null}>*/}
+            {/*                <ToolOutlined className={!isOwner ? "disable-action-btn" : ""}*/}
+            {/*                              style={{color: "black", fontSize: "20px"}}/>*/}
+            {/*            </span>*/}
+            {/*        </Tooltip>*/}
 
-                    <Tooltip title={isOwner ? "Delete this post" : "Disable with you"} placement={"bottom"}>
-                        <span className="mx-1 post-action-btn" onClick={isOwner ? ()=>{unavailablePost(post.id)}:null}>
-                            <DeleteOutlined className={!isOwner ? "disable-action-btn" : ""}
-                                            style={{color: "red", fontSize: "20px"}}/>
-                        </span>
-                    </Tooltip>
+            {/*        <Tooltip title={isOwner ? "Delete this post" : "Disable with you"} placement={"bottom"}>*/}
+            {/*            <span className="mx-1 post-action-btn" onClick={isOwner ? ()=>{unavailablePost(post.id)}:null}>*/}
+            {/*                <DeleteOutlined className={!isOwner ? "disable-action-btn" : ""}*/}
+            {/*                                style={{color: "red", fontSize: "20px"}}/>*/}
+            {/*            </span>*/}
+            {/*        </Tooltip>*/}
 
-                    <Tooltip title={!isOwner ? "Exchange this product" : "Disable with you"} placement={"bottom"}>
-                        <span onClick={!isOwner ?() => setModalUserPostVisible(true): null} className="mx-1 post-action-btn">
-                            <InteractionOutlined className={isOwner ? "disable-action-btn" : ""}
-                                                 style={{color: "green", fontSize: "20px"}}/>
-                        </span>
-                    </Tooltip>
+            {/*        <Tooltip title={!isOwner ? "Exchange this product" : "Disable with you"} placement={"bottom"}>*/}
+            {/*            <span onClick={!isOwner ?() => setModalUserPostVisible(true): null} className="mx-1 post-action-btn">*/}
+            {/*                <InteractionOutlined className={isOwner ? "disable-action-btn" : ""}*/}
+            {/*                                     style={{color: "green", fontSize: "20px"}}/>*/}
+            {/*            </span>*/}
+            {/*        </Tooltip>*/}
 
-                    <Tooltip title={"See post details"} placement={"bottom"}>
-                        <span className="mx-1 post-action-btn">
-                            <DoubleRightOutlined style={{color: "blue", fontSize: "20px"}} onClick={() => {
-                                window.location.href = paths.PostDetail(post.id)
-                            }}/>
-                        </span>
-                    </Tooltip>
-                </div>:<div/>}
-            </div>
+            {/*        <Tooltip title={"See post details"} placement={"bottom"}>*/}
+            {/*            <span className="mx-1 post-action-btn">*/}
+            {/*                <DoubleRightOutlined style={{color: "blue", fontSize: "20px"}} onClick={() => {*/}
+            {/*                    window.location.href = paths.PostDetail(post.id)*/}
+            {/*                }}/>*/}
+            {/*            </span>*/}
+            {/*        </Tooltip>*/}
+            {/*    </div>:<div/>}*/}
+            {/*</div>*/}
             {/*<UserListPostModal postDataIdTo={post.id} visible ={modalUserPostVisible} setVisible={setModalUserPostVisible} user={user}/>*/}
             {/*<EditPost postData={post} newPostId={post.id} visible={editPostModalVisible} setVisible={setEditPostModalVisible}/>*/}
         </div>
