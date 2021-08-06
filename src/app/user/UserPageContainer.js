@@ -6,187 +6,9 @@ import {Button, Input, List, notification} from "antd";
 import PostDisplayCard from "../post/PostDisplayCard";
 import UploadPost from "../post/UploadPost";
 import {getUserDataById} from "../../services/api/getUserData";
+import TransactionHistoryOfUser from "../TransactionHistory/TransactionHistoryOfUser";
 
 const {Search} = Input;
-
-const dataTest = [
-    {
-        id: 3,
-        owner_id: 4,
-        name: "Tv sony cu 24 inch",
-        brand: "sony",
-        type: "Đồ điện tử",
-        amount: 1,
-        description: "Đồ con mới, mới sử dụng tử năm 2019",
-        image_url: "https://chugiong.com/uploads/20170911171414_7947269_tivi_sony_24_inch_gia_bao_nhieu_o_thoi_diem_hien_tai_1.jpg",
-        status: "available",
-        created_at: "2021-07-16T04:21:30Z"
-    },
-    {
-        id: 4,
-        owner_id: 4,
-        name: "máy tính để bàn",
-        brand: "Dell",
-        type: "Đồ điện tử",
-        amount: 2,
-        description: "Đồ con mới, mới sử dụng tử năm 2019",
-        image_url: "https://file.chodocu.com//2018/08/08/16754143--9877.jpg",
-        status: "available",
-        created_at: "2021-07-16T05:59:49Z"
-    }, {
-        id: 3,
-        owner_id: 4,
-        name: "Tv sony cu 24 inch",
-        brand: "sony",
-        type: "Đồ điện tử",
-        amount: 1,
-        description: "Đồ con mới, mới sử dụng tử năm 2019",
-        image_url: "https://chugiong.com/uploads/20170911171414_7947269_tivi_sony_24_inch_gia_bao_nhieu_o_thoi_diem_hien_tai_1.jpg",
-        status: "available",
-        created_at: "2021-07-16T04:21:30Z"
-    },
-    {
-        id: 4,
-        owner_id: 4,
-        name: "máy tính để bàn",
-        brand: "Dell",
-        type: "Đồ điện tử",
-        amount: 2,
-        description: "Đồ con mới, mới sử dụng tử năm 2019",
-        image_url: "https://maytinhcdc.vn/media/news/399_8_may_tinh_de_ban_dell_nguyen_bo_2.jpg",
-        status: "available",
-        created_at: "2021-07-16T05:59:49Z"
-    }, {
-        id: 3,
-        owner_id: 4,
-        name: "Tv sony cu 24 inch",
-        brand: "sony",
-        type: "Đồ điện tử",
-        amount: 1,
-        description: "Đồ con mới, mới sử dụng tử năm 2019",
-        image_url: "https://chugiong.com/uploads/20170911171414_7947269_tivi_sony_24_inch_gia_bao_nhieu_o_thoi_diem_hien_tai_1.jpg",
-        status: "available",
-        created_at: "2021-07-16T04:21:30Z"
-    },
-    {
-        id: 4,
-        owner_id: 4,
-        name: "máy tính để bàn",
-        brand: "Dell",
-        type: "Đồ điện tử",
-        amount: 2,
-        description: "Đồ con mới, mới sử dụng tử năm 2019",
-        image_url: "https://maytinhcdc.vn/media/news/399_8_may_tinh_de_ban_dell_nguyen_bo_2.jpg",
-        status: "available",
-        created_at: "2021-07-16T05:59:49Z"
-    }, {
-        id: 3,
-        owner_id: 4,
-        name: "Tv sony cu 24 inch",
-        brand: "sony",
-        type: "Đồ điện tử",
-        amount: 1,
-        description: "Đồ con mới, mới sử dụng tử năm 2019",
-        image_url: "https://chugiong.com/uploads/20170911171414_7947269_tivi_sony_24_inch_gia_bao_nhieu_o_thoi_diem_hien_tai_1.jpg",
-        status: "available",
-        created_at: "2021-07-16T04:21:30Z"
-    },
-    {
-        id: 4,
-        owner_id: 4,
-        name: "máy tính để bàn",
-        brand: "Dell",
-        type: "Đồ điện tử",
-        amount: 2,
-        description: "Đồ con mới, mới sử dụng tử năm 2019",
-        image_url: "https://maytinhcdc.vn/media/news/399_8_may_tinh_de_ban_dell_nguyen_bo_2.jpg",
-        status: "available",
-        created_at: "2021-07-16T05:59:49Z"
-    }, {
-        id: 3,
-        owner_id: 4,
-        name: "Tv sony cu 24 inch",
-        brand: "sony",
-        type: "Đồ điện tử",
-        amount: 1,
-        description: "Đồ con mới, mới sử dụng tử năm 2019",
-        image_url: "https://chugiong.com/uploads/20170911171414_7947269_tivi_sony_24_inch_gia_bao_nhieu_o_thoi_diem_hien_tai_1.jpg",
-        status: "available",
-        created_at: "2021-07-16T04:21:30Z"
-    },
-    {
-        id: 4,
-        owner_id: 4,
-        name: "máy tính để bàn",
-        brand: "Dell",
-        type: "Đồ điện tử",
-        amount: 2,
-        description: "Đồ con mới, mới sử dụng tử năm 2019",
-        image_url: "https://file.chodocu.com//2018/08/08/16754143--9877.jpg",
-        status: "available",
-        created_at: "2021-07-16T05:59:49Z"
-    },
-    {
-        id: 4,
-        owner_id: 4,
-        name: "máy tính để bàn",
-        brand: "Dell",
-        type: "Đồ điện tử",
-        amount: 2,
-        description: "Đồ con mới, mới sử dụng tử năm 2019",
-        image_url: "https://file.chodocu.com//2018/08/08/16754143--9877.jpg",
-        status: "available",
-        created_at: "2021-07-16T05:59:49Z"
-    },
-    {
-        id: 4,
-        owner_id: 4,
-        name: "máy tính để bàn",
-        brand: "Dell",
-        type: "Đồ điện tử",
-        amount: 2,
-        description: "Đồ con mới, mới sử dụng tử năm 2019",
-        image_url: "https://maytinhcdc.vn/media/news/399_8_may_tinh_de_ban_dell_nguyen_bo_2.jpg",
-        status: "available",
-        created_at: "2021-07-16T05:59:49Z"
-    },
-    {
-        id: 4,
-        owner_id: 4,
-        name: "máy tính để bàn",
-        brand: "Dell",
-        type: "Đồ điện tử",
-        amount: 2,
-        description: "Đồ con mới, mới sử dụng tử năm 2019",
-        image_url: "https://maytinhcdc.vn/media/news/399_8_may_tinh_de_ban_dell_nguyen_bo_2.jpg",
-        status: "available",
-        created_at: "2021-07-16T05:59:49Z"
-    },
-    {
-        id: 4,
-        owner_id: 4,
-        name: "máy tính để bàn",
-        brand: "Dell",
-        type: "Đồ điện tử",
-        amount: 2,
-        description: "Đồ con mới, mới sử dụng tử năm 2019",
-        image_url: "https://file.chodocu.com//2018/08/08/16754143--9877.jpg",
-        status: "available",
-        created_at: "2021-07-16T05:59:49Z"
-    },
-    {
-        id: 4,
-        owner_id: 4,
-        name: "máy tính để bàn",
-        brand: "Dell",
-        type: "Đồ điện tử",
-        amount: 2,
-        description: "Đồ con mới, mới sử dụng tử năm 2019",
-        image_url: "https://maytinhcdc.vn/media/news/399_8_may_tinh_de_ban_dell_nguyen_bo_2.jpg",
-        status: "available",
-        created_at: "2021-07-16T05:59:49Z"
-    }
-]
 
 
 const UserPageContainer = (props) => {
@@ -234,7 +56,6 @@ const UserPageContainer = (props) => {
             else setNewPostId(1)
             setIsLoading(false)
         } else {
-            setPostData(dataTest)
             setIsLoading(false)
         }
     }
@@ -315,6 +136,7 @@ const UserPageContainer = (props) => {
                             </div>
                         </div>
                     </div>
+                    <TransactionHistoryOfUser userId={userDataId}/>
                 </div>
                 <div className={"col-xl-3 col-sm12"}>
                     <div className={"post-table-content mt-3 p15"} style={{

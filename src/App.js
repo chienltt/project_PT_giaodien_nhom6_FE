@@ -12,7 +12,6 @@ function App({route}) {
         setUser(value)
     }
   const [loading,setLoading]= useState(false)
-
   return (
       <AppContext.Provider value={{
         user,

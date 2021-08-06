@@ -8,11 +8,17 @@ import UserListContainer from "../app/userList/UserListContainer";
 import PostDetailContainer from "../app/postDetail/PostDetailContainer";
 import HomePageContainer from "../app/homepage/HomePageContainer";
 import ProductContainer from "../app/products/ProductContainer";
+import FirstDirect from "../app/FirstDirect/FirstDirect";
 
 const router=[
     {
         component:App,
         routes:[
+            {
+                path: paths.FirstDirect,
+                exact: true,
+                component:FirstDirect
+            },
             {
                 path: paths.Login,
                 exact:true,
