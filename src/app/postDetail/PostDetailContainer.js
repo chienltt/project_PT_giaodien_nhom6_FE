@@ -22,7 +22,7 @@ const PostDetailContainer = (props) => {
 
     const getPostData = async () => {
         const {data, success} = await getPostDataByPostId(postId)
-        if (success && data.data) {
+        if (success) {
             console.log("hoang", data.data.owner_id)
             setPostData(data.data)
             setAdditionalImages(data.data.additional_image)
