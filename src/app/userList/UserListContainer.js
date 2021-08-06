@@ -80,7 +80,7 @@ const UserListContainer = (props) => {
                         key="action"
                         render={(text, record) => (
                             <Space size="middle">
-                                <a href={`${paths.UserPage(record.id)}`}>Detail {record.username}</a>
+                                <a href={`${paths.UserPage(record.id)}`}>Xem {record.username}</a>
                             </Space>
                         )}
                     />

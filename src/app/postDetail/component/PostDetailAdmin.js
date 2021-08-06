@@ -45,13 +45,6 @@ const PostDetailAdmin = (props) => {
         }
     }
 
-    function clickDelete() {
-        notification.error({
-            message: "Error",
-            description: "Hệ thống gặp sự cố, vui lòng thực hiện lại!"
-        })
-    }
-
     const { Column } = Table;
     return (
         <div style={{backgroundColor: "#fff", marginTop: "30px", borderRadius: "5px", border: "1px solid black"}}>
@@ -59,7 +52,7 @@ const PostDetailAdmin = (props) => {
                 fontSize:"28px" , paddingTop:"20px",
             }}>Danh sách sản phẩm muốn trao đổi</h1>
             <div className={"Admin-table"}>
-                <Table dataSource={dataUsers}>
+                <Table dataSource={dataUsers} pagination={{ pageSize: 5 }}>
                     <Column title="Mã Số" dataIndex="id" key="id" />
                     <Column title="Hàng trao đổi" dataIndex="name" key="name" />
                     <Column title="Kiểu hàng trao đổi" dataIndex="type" key="type" />
@@ -80,12 +73,6 @@ const PostDetailAdmin = (props) => {
                                 <div onClick={props.ownerPost===user.id?() => clickAccept(record.transactionId, record.id):null}>
                                     <Tooltip title={"Chấp nhận đổi"}>
                                         <InteractionOutlined style={props.ownerPost===user.id?{color: "green",cursor:"pointer", fontSize: "16px"}:{color: "gray", fontSize: "16px"}} />
-                                    </Tooltip>
-                                </div>
-                                {/* eslint-disable-next-line no-undef */}
-                                <div onClick= {props.ownerPost===user.id?() => clickDelete():null}>
-                                    <Tooltip title={"Xóa lời mời"}>
-                                        <DeleteOutlined style={props.ownerPost===user.id?{color: "red", fontSize: "16px"}:{color: "gray", fontSize: "16px"}} />
                                     </Tooltip>
                                 </div>
                             </Space>

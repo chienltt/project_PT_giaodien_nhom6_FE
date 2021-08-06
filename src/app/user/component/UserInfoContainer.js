@@ -5,7 +5,7 @@ const UserInfoContainer = (props) => {
     const user= props.user
     return (
         <div className={"info-content"} style={{margin: "15px"}}>
-            <h5>Infomation</h5>
+            <h5>Thông tin cá nhân</h5>
             <div>
                 <strong>User Name:</strong> <span>{user.username}</span>
             </div>

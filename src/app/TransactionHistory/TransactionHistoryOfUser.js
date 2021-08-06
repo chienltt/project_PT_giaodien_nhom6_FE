@@ -20,7 +20,7 @@ const TransactionHistoryOfUser=(props)=>{
             setData(data.data)
         }
         else {
-            notification.error("can't load transaction history!")
+            notification.error("Không tìm thấy lịch sử giao dịch!")
         }
 
     }
@@ -31,7 +31,7 @@ const TransactionHistoryOfUser=(props)=>{
             render: (name,record) => <a href={paths.UserPage(record.from_user_id)}>{name}</a>,
         },
         {
-            title: 'Người chấp nhận',
+            title: 'Người được yêu cầu',
             dataIndex: 'to_user_name',
             render: (name,record) => <a href={paths.UserPage(record.to_user_id)}>{name}</a>,
         },
@@ -41,7 +41,7 @@ const TransactionHistoryOfUser=(props)=>{
             render: (name,record) => <a href={paths.PostDetail(record.from_post_id)}>{name}</a>,
         },
         {
-            title: 'Sản phẩm chấp nhận',
+            title: 'Sản phẩm được yêu cầu',
             dataIndex: 'to_post_name',
             render: (name,record) =><a href={paths.PostDetail(record.to_post_id)}>{name}</a>,
         },
@@ -72,6 +72,7 @@ const TransactionHistoryOfUser=(props)=>{
             className={"table-trans-his-content"}
             columns={column}
             dataSource={data}
+            pagination={{ pageSize: 5 }}
         />
     </div>)
 }
