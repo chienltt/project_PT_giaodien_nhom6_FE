@@ -22,20 +22,20 @@ const PostDisplayCard = (props) => {
     return (
         <div className={post.id !== isSelected ? "post-card-item-card": "post-card-item-card selected-post"}
              onClick={isChoosing?()=>{setPostSelected(post.id)}:null}>
-            <Tooltip title={"your active post"}>
+            <Tooltip title={"Sản phẩm có sẵn"}>
                 <img className={"post-card-image"} src={post.main_image} alt={"Can't load this img"}/>
             </Tooltip>
             <div className={"post-card-item-card__text-wrapper"}>
                 <h2 className={"post-card-item-card-title"}>{post.name} </h2>
                 {!isChoosing?<div className={"post-card-item-card__text-details-wrapper"}>
 
-                    <Tooltip title={!checkOwner(post.owner_id) ? "Exchange this product" : "Disable with you"} placement={"bottom"}>
+                    <Tooltip title={!checkOwner(post.owner_id) ? "Đổi sản phẩm" : "Vô hiệu hóa với bạn"} placement={"bottom"}>
                         <span onClick={() => setModalUserPostVisible(true)} className="mx-1 post-action-btn">
                             <InteractionOutlined className={checkOwner(post.owner_id) ? "disable-action-btn" : ""}
                                                  style={{color: "green", fontSize: "20px"}}/>
                         </span>
                     </Tooltip>
-                    <Tooltip title={"See post details"} placement={"bottom"}>
+                    <Tooltip title={"Xem chi tiết"} placement={"bottom"}>
                         <span className="mx-1 post-action-btn">
                             <DoubleRightOutlined style={{color: "blue", fontSize: "20px"}} onClick={()=>{
                                 window.location.href= paths.PostDetail(post.id)

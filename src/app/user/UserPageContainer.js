@@ -104,7 +104,7 @@ const UserPageContainer = (props) => {
                             justifyContent: "center"
                         }}>
                             <Search
-                                placeholder="search post by name,id"
+                                placeholder="Tìm kiếm bằng tên hoặc id"
                                 allowClear
                                 enterButton="Search"
                                 size="large"

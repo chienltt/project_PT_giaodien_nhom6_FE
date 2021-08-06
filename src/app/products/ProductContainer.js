@@ -55,7 +55,7 @@ const ProductContainer = (props) => {
                     }}>
                         <div style={{padding:"15px 0 30px 0", display: "flex", justifyContent:"center"}}>
                             <Search
-                                placeholder="Search Product"
+                                placeholder="Tìm kiếm sản phẩm"
                                 allowClear
                                 enterButton="Search"
                                 size="large"

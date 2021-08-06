@@ -1,12 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import "./PostDetailContainer.scss";
 import {getPostDataByPostId} from "../../services/api/PostData";
 import {getUserDataById} from "../../services/api/getUserData";
 import PostDetailAdmin from "./component/PostDetailAdmin";
 import {Image} from "antd";
+import AppContext from "../../AppContext";
 
 
 const PostDetailContainer = (props) => {
+    const {user}= useContext(AppContext)
     const [postData, setPostData] = useState([]);
     const [userData, setUserData] = useState({});
     const [additionalImages, setAdditionalImages] = useState([]);
@@ -20,8 +22,8 @@ const PostDetailContainer = (props) => {
 
     const getPostData = async () => {
         const {data, success} = await getPostDataByPostId(postId)
-        if (success) {
-            console.log("okok1", data.data.owner_id)
+        if (success && data.data) {
+            console.log("hoang", data.data.owner_id)
             setPostData(data.data)
             setAdditionalImages(data.data.additional_image)
             setOwnerId(data.data.owner_id)
@@ -94,8 +96,8 @@ const PostDetailContainer = (props) => {
                             </div>
                         </div>
                     </div>
-                    {/*{ user.id !== ownerId ? <PostDetailAdmin props= {props} /> : <div></div>}*/}
-                    <PostDetailAdmin ownerPost={ownerId} props={props}/>
+                    { user.id === ownerId ? <PostDetailAdmin props= {props} /> : <div></div>}
+                    {/*<PostDetailAdmin ownerPost={ownerId} props={props}/>*/}
                 </div>
                 <div className={"col-xl-3 col-sm12"}>
                     <div className={"mt-3 p15"} style={{
@@ -106,7 +108,7 @@ const PostDetailContainer = (props) => {
                     }}>
                         <div className={"info-content"}
                              style={{margin: "15px", padding: "10px 0 30px", lineHeight: "36px"}}>
-                            <h5>Infomation about Trader </h5>
+                            <h5>Thông tin về chủ sản phẩm</h5>
                             <div>
                                 <strong>User Name:</strong> <span>{userData.username}</span>
                             </div>
