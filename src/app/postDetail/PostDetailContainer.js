@@ -27,7 +27,7 @@ const PostDetailContainer = (props) => {
             setPostData(data.data)
             setAdditionalImages(data.data.additional_image)
             setOwnerId(data.data.owner_id)
-            getUserData()
+            getUserData(data.data.owner_id)
         }
     }
     const showAdditionalImages = () => {
@@ -38,8 +38,8 @@ const PostDetailContainer = (props) => {
         })
     }
 
-    const getUserData = async () => {
-        const {data, success} = await getUserDataById(ownerId)
+    const getUserData = async (userId) => {
+        const {data, success} = await getUserDataById(userId)
         if (success) {
             setUserData(data.data)
         }

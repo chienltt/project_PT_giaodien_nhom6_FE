@@ -3,7 +3,7 @@ import AppContext from "../AppContext";
 import {renderRoutes} from "react-router-config";
 import _ from 'lodash';
 import "./DefaultContainer.scss"
-import {SearchOutlined, UserOutlined} from '@ant-design/icons';
+import { UserOutlined} from '@ant-design/icons';
 import paths from "../router/paths";
 import Footer from "./homepage/Footer";
 import {removeLocalStorage} from "../services/storage/LocalStorage";

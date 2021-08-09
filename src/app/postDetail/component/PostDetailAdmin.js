@@ -1,8 +1,8 @@
 import React, {useContext, useEffect, useState} from "react";
 import paths from "../../../router/paths";
 import 'antd/dist/antd.css';
-import {Table, Space, Tooltip, notification} from "antd";
-import {DeleteOutlined, DoubleRightOutlined, InteractionOutlined} from '@ant-design/icons';
+import {Table, Space, Tooltip} from "antd";
+import { DoubleRightOutlined, InteractionOutlined} from '@ant-design/icons';
 import './PostDetailAdmin.scss'
 import {getAllPostWantToTrade} from "../../../services/api/PostData";
 import {completeTrading} from "../../../services/api/AccountApi";

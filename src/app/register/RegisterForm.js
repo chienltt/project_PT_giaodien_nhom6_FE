@@ -142,13 +142,14 @@ const RegisterForm=()=>{
 
                     <Form.Item
                         wrapperCol={{
-                            offset: 10,
+                            offset: 7,
                             span: 20,
                         }}
                     >
-                        <Button loading={loading} type="primary" htmlType="submit" >
+                        <Button disabled={true} loading={loading} type="primary" htmlType="submit" >
                             Register
                         </Button>
+                        Không thể đăng kí trong giai đoạn này
                     </Form.Item>
                 </Form>
             </div>
